@@ -708,6 +708,111 @@
           text-align: center;
         }
       }
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 1001;
+      }
+
+      .menu-toggle span {
+        width: 26px;
+        height: 3px;
+        border-radius: 999px;
+        background: white;
+        transition: 0.3s ease;
+      }
+
+      /* MOBILE */
+
+      @media (max-width: 768px) {
+        header {
+          padding: 14px 5%;
+        }
+
+        .menu-toggle {
+          display: flex;
+        }
+
+        nav {
+          position: fixed;
+          top: 0;
+          right: -100%;
+
+          width: 280px;
+          height: 100vh;
+
+          background: linear-gradient(180deg, #4a0c18, #5c0f1d, #7a1f2b);
+
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+
+          padding: 95px 24px 30px;
+
+          gap: 8px;
+
+          transition: 0.4s ease;
+
+          z-index: 1000;
+
+          overflow-y: auto;
+        }
+
+        nav.show {
+          right: 0;
+        }
+
+        nav a {
+          width: 100%;
+          padding: 14px 16px;
+          border-radius: 14px;
+          font-size: 14px;
+        }
+
+        nav a:hover {
+          background: rgba(255, 255, 255, 0.08);
+          transform: none;
+        }
+
+        .btn-nav {
+          width: 100%;
+          text-align: center;
+          margin-top: 10px;
+        }
+
+        .dropdown {
+          width: 100%;
+        }
+
+        .dropdown-content {
+          position: static;
+
+          width: 100%;
+
+          opacity: 1;
+          visibility: visible;
+
+          transform: none;
+
+          background: rgba(255, 255, 255, 0.06);
+
+          border: none;
+          box-shadow: none;
+
+          margin-top: 6px;
+
+          display: flex;
+
+          padding: 6px;
+        }
+
+        .dropdown-content a {
+          color: white;
+          font-size: 13px;
+        }
+      }
     </style>
   </head>
 
@@ -715,50 +820,43 @@
     <!-- NAVBAR -->
 
     <header id="navbar">
-      <!-- LOGO -->
       <div class="logo">
         <img src="assets/logo.png" />
 
         <div>
           <h1>Desa Bondolharjo</h1>
-
-          <p>Kec. Punggelan, Kab. Banjarnegara, Prov. Jawa Tengah</p>
+          <p>Kec. Punggelan, Kab. Banjarnegara</p>
         </div>
       </div>
 
-      <!-- MENU -->
-      <nav>
-        <!-- BERANDA -->
-        <a href="index.html" class="active"> Beranda </a>
+      <!-- MENU TOGGLE -->
+      <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
 
-        <!-- DROPDOWN PROFIL -->
+      <nav id="navMenu">
+        <a href="index.html" class="active">Beranda</a>
+
         <div class="dropdown">
-          <a href="profil.html"> Profil Desa ▾ </a>
+          <a href="profil.html">Profil Desa ▾</a>
 
           <div class="dropdown-content">
-            <a href="profil.html#tentang"> Tentang Desa </a>
-
-            <a href="profil.html#sejarah"> Sejarah </a>
-
-            <a href="profil.html#visi-misi"> Visi & Misi </a>
-
-            <a href="profil.html#peta"> Peta Desa </a>
+            <a href="profil.html#tentang">Tentang Desa</a>
+            <a href="profil.html#sejarah">Sejarah</a>
+            <a href="profil.html#visi-misi">Visi & Misi</a>
+            <a href="profil.html#peta">Peta Desa</a>
           </div>
         </div>
 
-        <!-- MENU LAIN -->
-        <a href="struktur.html"> Struktur </a>
-
-        <a href="statistik.html"> Statistik </a>
-
-        <a href="umkm.html"> UMKM </a>
-
-        <a href="galeri.html"> Galeri </a>
-
-        <a href="layanan.html" class="btn-nav"> Layanan </a>
+        <a href="struktur.html">Struktur</a>
+        <a href="statistik.html">Statistik</a>
+        <a href="umkm.html">UMKM</a>
+        <a href="galeri.html">Galeri</a>
+        <a href="layanan.html" class="btn-nav">Layanan</a>
       </nav>
     </header>
-
     <!-- HERO -->
 
     <section class="hero">
@@ -940,6 +1038,20 @@
           }
         },
       );
+
+      const menuToggle = document.getElementById("menuToggle");
+      const navMenu = document.getElementById("navMenu");
+
+      menuToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("show");
+      });
+
+      // CLOSE MENU WHEN CLICK LINK
+      document.querySelectorAll("nav a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navMenu.classList.remove("show");
+        });
+      });
     </script>
   </body>
 </html>
