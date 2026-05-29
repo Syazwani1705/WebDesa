@@ -40,7 +40,9 @@
       header {
         width: 100%;
         padding: 18px 8%;
+
         display: flex;
+        justify-content: space-between;
         align-items: center;
 
         position: fixed;
@@ -48,7 +50,12 @@
         left: 0;
 
         z-index: 999;
-        transition: 0.4s;
+
+        transition:
+          background 0.4s ease,
+          box-shadow 0.4s ease,
+          backdrop-filter 0.4s ease,
+          padding 0.35s ease;
 
         background: linear-gradient(
           to bottom,
@@ -58,17 +65,20 @@
           transparent 100%
         );
       }
+
       header.scrolled {
+        padding: 14px 8%;
+
         background: linear-gradient(
           135deg,
-          rgba(74, 12, 24, 0.96) 0%,
-          rgba(92, 15, 29, 0.94) 45%,
-          rgba(122, 31, 43, 0.92) 100%
+          rgba(74, 12, 24, 0.96),
+          rgba(92, 15, 29, 0.95),
+          rgba(122, 31, 43, 0.96)
         );
 
-        backdrop-filter: blur(14px);
+        backdrop-filter: blur(12px);
 
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
       }
       .logo {
         display: flex;
