@@ -615,7 +615,14 @@
 
       @media (max-width: 768px) {
         header {
+          flex-direction: column;
+          gap: 15px;
           padding: 15px 5%;
+        }
+
+        .logo {
+          justify-content: center;
+          text-align: center;
         }
 
         .logo img {
@@ -631,11 +638,13 @@
         }
 
         nav {
-          gap: 14px;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 12px;
         }
 
         nav a {
-          font-size: 13px;
+          font-size: 14px;
         }
 
         .btn-nav {
