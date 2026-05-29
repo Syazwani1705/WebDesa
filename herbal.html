@@ -680,13 +680,74 @@
 
       /* MOBILE */
 
+      /* ================= RESPONSIVE ================= */
+
+      @media (max-width: 992px) {
+        header {
+          padding: 16px 5%;
+        }
+
+        nav {
+          gap: 18px;
+        }
+
+        .hero-text h2 {
+          font-size: 42px;
+        }
+
+        .content {
+          padding: 80px 5%;
+        }
+
+        .article-content h1 {
+          font-size: 34px;
+        }
+      }
+
+      /* MENU TOGGLE */
+
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 1001;
+      }
+
+      .menu-toggle span {
+        width: 26px;
+        height: 3px;
+        border-radius: 999px;
+        background: white;
+      }
+
+      /* MOBILE */
+
       @media (max-width: 768px) {
         header {
           padding: 14px 5%;
+          flex-direction: row;
         }
 
         .menu-toggle {
           display: flex;
+        }
+
+        .logo {
+          gap: 10px;
+        }
+
+        .logo img {
+          width: 48px;
+        }
+
+        .logo h1 {
+          font-size: 16px;
+        }
+
+        .logo p {
+          font-size: 9px;
+          line-height: 1.5;
         }
 
         nav {
@@ -720,11 +781,8 @@
 
         nav a {
           width: 100%;
-
           padding: 14px 16px;
-
           border-radius: 14px;
-
           font-size: 14px;
         }
 
@@ -770,16 +828,8 @@
           font-size: 13px;
         }
 
-        .logo h1 {
-          font-size: 16px;
-        }
-
-        .logo p {
-          font-size: 10px;
-        }
-
         .hero {
-          height: 60vh;
+          height: 58vh;
         }
 
         .hero-text {
@@ -796,37 +846,42 @@
           line-height: 1.7;
         }
 
-        .title h2 {
-          font-size: 30px;
+        .content {
+          padding: 70px 5%;
         }
 
-        .title p {
+        .article-box {
+          border-radius: 24px;
+        }
+
+        .article-content {
+          padding: 26px;
+        }
+
+        .article-content h1 {
+          font-size: 28px;
+          line-height: 1.4;
+        }
+
+        .article-content p {
           font-size: 14px;
+          line-height: 1.9;
         }
 
-        .foto-grid,
-        .video-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .foto-card img {
-          height: 260px;
-        }
-
-        .video-thumb img {
-          height: 220px;
-        }
-
-        .video-content {
-          padding: 20px;
-        }
-
-        .video-content h3 {
-          font-size: 20px;
-        }
-
-        .video-content p {
+        .tanggal {
           font-size: 13px;
+          padding: 8px 16px;
+        }
+
+        .quote {
+          padding: 22px;
+          font-size: 15px;
+          line-height: 1.8;
+        }
+
+        .btn-back {
+          width: 100%;
+          text-align: center;
         }
 
         .footer-container {
@@ -858,31 +913,56 @@
           font-size: 22px;
         }
       }
+
       @media (max-width: 480px) {
         .hero {
-          height: 48vh;
+          height: 50vh;
         }
 
         .hero-text h2 {
-          font-size: 24px;
+          font-size: 26px;
         }
 
         .hero-text p {
           font-size: 13px;
         }
 
+        .article-box {
+          border-radius: 20px;
+        }
+
+        .article-image img {
+          height: 230px;
+          object-fit: cover;
+        }
+
+        .article-content {
+          padding: 22px;
+        }
+
         .article-content h1 {
           font-size: 22px;
         }
 
+        .article-content p {
+          font-size: 13px;
+          line-height: 1.8;
+        }
+
         .tanggal {
           font-size: 12px;
-          padding: 8px 14px;
+          padding: 7px 14px;
         }
 
         .quote {
           font-size: 14px;
-          line-height: 1.7;
+          padding: 18px;
+          border-radius: 14px;
+        }
+
+        .btn-back {
+          padding: 13px 20px;
+          font-size: 14px;
         }
       }
     </style>
