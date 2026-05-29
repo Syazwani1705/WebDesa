@@ -39,11 +39,8 @@
 
       header {
         width: 100%;
-
         padding: 18px 8%;
-
         display: flex;
-        justify-content: space-between;
         align-items: center;
 
         position: fixed;
@@ -51,7 +48,6 @@
         left: 0;
 
         z-index: 999;
-
         transition: 0.4s;
 
         background: linear-gradient(
@@ -62,7 +58,6 @@
           transparent 100%
         );
       }
-
       header.scrolled {
         background: linear-gradient(
           135deg,
@@ -75,11 +70,14 @@
 
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
       }
-
       .logo {
         display: flex;
         align-items: center;
         gap: 14px;
+      }
+
+      nav {
+        margin-left: auto;
       }
 
       .logo img {
