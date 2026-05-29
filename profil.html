@@ -1,0 +1,1508 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Profil Desa Bondolharjo</title>
+
+    <!-- GOOGLE FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #f7f3f4;
+        overflow-x: hidden;
+      }
+
+      header {
+        width: 100%;
+        padding: 18px 8%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        z-index: 999;
+
+        transition: 0.4s;
+
+        background: linear-gradient(
+          to bottom,
+          rgba(45, 8, 18, 0.92) 0%,
+          rgba(92, 15, 29, 0.68) 55%,
+          rgba(122, 31, 43, 0.15) 85%,
+          transparent 100%
+        );
+      }
+
+      header.scrolled {
+        background: linear-gradient(
+          135deg,
+          rgba(74, 12, 24, 0.96) 0%,
+          rgba(92, 15, 29, 0.94) 45%,
+          rgba(122, 31, 43, 0.92) 100%
+        );
+
+        backdrop-filter: blur(14px);
+
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .logo img {
+        width: 58px;
+      }
+
+      .logo h1 {
+        color: white;
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .logo p {
+        color: #f5d8df;
+        font-size: 11px;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: white;
+        font-size: 15px;
+        font-weight: 500;
+        position: relative;
+        transition: 0.3s;
+      }
+
+      nav a:hover {
+        color: #ffd6e2;
+      }
+
+      nav a.active::after {
+        content: "";
+
+        position: absolute;
+
+        left: 0;
+        bottom: -6px;
+
+        width: 100%;
+        height: 2px;
+
+        border-radius: 999px;
+
+        background: linear-gradient(90deg, #ffd6e2, white);
+      }
+
+      /* DROPDOWN */
+
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-content {
+        position: absolute;
+        top: 45px;
+        left: 0;
+
+        min-width: 220px;
+
+        background: rgba(255, 255, 255, 0.96);
+
+        backdrop-filter: blur(12px);
+
+        border-radius: 20px;
+
+        padding: 12px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(10px);
+
+        transition: 0.35s ease;
+
+        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.12);
+      }
+
+      .dropdown:hover .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .dropdown-content a {
+        color: #5c0f1d;
+        padding: 12px 14px;
+        border-radius: 14px;
+        transition: 0.3s;
+      }
+
+      .dropdown-content a:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(92, 15, 29, 0.08),
+          rgba(214, 51, 132, 0.08)
+        );
+
+        transform: translateX(4px);
+      }
+
+      .btn-nav {
+        padding: 12px 28px;
+
+        border-radius: 999px;
+
+        background: linear-gradient(135deg, #5c0f1d, #d63384);
+
+        transition: 0.4s;
+      }
+
+      .btn-nav:hover {
+        transform: translateY(-3px);
+
+        box-shadow: 0 10px 20px rgba(92, 15, 29, 0.35);
+      }
+
+      /* =========================
+         HERO
+      ========================= */
+
+      .hero {
+        position: relative;
+
+        height: 88vh;
+
+        overflow: hidden;
+      }
+
+      .hero img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        animation: zoomHero 10s ease-in-out infinite;
+      }
+
+      .overlay {
+        position: absolute;
+        inset: 0;
+
+        background: linear-gradient(
+          to bottom,
+          rgba(45, 8, 18, 0.75),
+          rgba(0, 0, 0, 0.45)
+        );
+      }
+
+      .hero-text {
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        text-align: center;
+
+        color: white;
+
+        animation: fadeHero 1.2s ease;
+      }
+
+      .hero-badge {
+        display: inline-block;
+
+        margin-bottom: 18px;
+
+        padding: 10px 20px;
+
+        border-radius: 999px;
+
+        background: rgba(255, 255, 255, 0.15);
+
+        border: 1px solid rgba(255, 255, 255, 0.25);
+
+        backdrop-filter: blur(10px);
+
+        font-size: 14px;
+
+        letter-spacing: 0.5px;
+      }
+
+      .hero-text h2 {
+        font-size: 58px;
+        margin-bottom: 16px;
+      }
+
+      .hero-text p {
+        font-size: 17px;
+        line-height: 1.8;
+      }
+
+      /* =========================
+         CONTENT
+      ========================= */
+
+      .container {
+        width: 100%;
+        max-width: 1200px;
+
+        margin: auto;
+
+        padding: 90px 8%;
+      }
+
+      .title {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .title h2 {
+        font-size: 42px;
+        color: #5c0f1d;
+        margin-bottom: 14px;
+      }
+
+      .line {
+        width: 90px;
+        height: 4px;
+
+        margin: auto;
+
+        border-radius: 999px;
+
+        background: linear-gradient(90deg, #5c0f1d, #d63384);
+      }
+
+      .card,
+      .visi-box,
+      .misi-card,
+      .map-card,
+      .location-card {
+        border: 1px solid rgba(92, 15, 29, 0.06);
+      }
+
+      .card {
+        background: white;
+
+        padding: 45px;
+
+        border-radius: 32px;
+
+        margin-bottom: 35px;
+
+        position: relative;
+
+        overflow: hidden;
+
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.07);
+
+        transition: 0.4s;
+      }
+
+      .card::before,
+      .visi-box::before {
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 5px;
+
+        background: linear-gradient(90deg, #5c0f1d, #d63384);
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+
+        box-shadow: 0 20px 45px rgba(92, 15, 29, 0.12);
+      }
+
+      .card h3 {
+        color: #5c0f1d;
+        font-size: 30px;
+        margin-bottom: 22px;
+      }
+
+      .card p {
+        color: #555;
+        line-height: 2;
+        font-size: 15px;
+        text-align: justify;
+      }
+      .map-btn {
+        display: inline-block;
+
+        margin: 20px auto 25px;
+
+        padding: 12px 24px;
+
+        border-radius: 999px;
+
+        color: white;
+
+        text-decoration: none;
+
+        font-weight: 600;
+
+        font-size: 15px;
+
+        background: linear-gradient(135deg, #8b0d3a, #d63384);
+
+        transition: 0.3s ease;
+
+        width: fit-content;
+      }
+
+      .map-btn:hover {
+        transform: translateY(-3px);
+
+        box-shadow: 0 10px 20px rgba(214, 51, 132, 0.25);
+      }
+      .map-card,
+      .location-card {
+        text-align: center;
+      }
+      /* =========================
+         VISI MISI
+      ========================= */
+
+      .visi-misi-section {
+        padding: 100px 0;
+      }
+
+      .visi-box {
+        background: white;
+
+        padding: 45px;
+
+        border-radius: 30px;
+
+        margin-bottom: 40px;
+
+        position: relative;
+
+        overflow: hidden;
+
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+
+        transition: 0.4s;
+      }
+
+      .visi-box:hover {
+        transform: translateY(-8px);
+
+        box-shadow: 0 25px 50px rgba(92, 15, 29, 0.12);
+      }
+
+      .icon-box {
+        width: 65px;
+        height: 65px;
+
+        border-radius: 20px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 28px;
+
+        margin-bottom: 20px;
+
+        background: linear-gradient(135deg, #5c0f1d, #d63384);
+
+        color: white;
+
+        box-shadow: 0 10px 25px rgba(214, 51, 132, 0.25);
+      }
+
+      .visi-box h3 {
+        color: #5c0f1d;
+
+        font-size: 30px;
+
+        margin-bottom: 20px;
+      }
+
+      .visi-text {
+        font-size: 18px;
+
+        line-height: 2;
+
+        color: #444;
+
+        font-weight: 500;
+
+        margin-bottom: 18px;
+      }
+
+      .visi-box p {
+        color: #666;
+
+        line-height: 2;
+      }
+
+      .misi-container {
+        display: grid;
+
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+
+        gap: 30px;
+      }
+
+      .misi-card {
+        background: white;
+
+        padding: 35px;
+
+        border-radius: 28px;
+
+        position: relative;
+
+        overflow: hidden;
+
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.07);
+
+        transition: 0.45s ease;
+      }
+
+      .misi-card::before {
+        content: "";
+
+        position: absolute;
+
+        top: 0;
+        left: 0;
+
+        width: 100%;
+        height: 5px;
+
+        background: linear-gradient(90deg, #5c0f1d, #d63384);
+      }
+
+      .misi-card:hover {
+        transform: translateY(-10px);
+
+        box-shadow: 0 20px 45px rgba(92, 15, 29, 0.15);
+      }
+
+      .misi-icon {
+        width: 60px;
+        height: 60px;
+
+        border-radius: 18px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 28px;
+
+        margin-bottom: 22px;
+
+        background: linear-gradient(
+          135deg,
+          rgba(92, 15, 29, 0.12),
+          rgba(214, 51, 132, 0.12)
+        );
+      }
+
+      .misi-card h3 {
+        color: #5c0f1d;
+
+        margin-bottom: 20px;
+
+        font-size: 24px;
+      }
+
+      .misi-card ul {
+        padding-left: 20px;
+      }
+
+      .misi-card li {
+        margin-bottom: 14px;
+
+        color: #555;
+
+        line-height: 1.9;
+
+        transition: 0.3s;
+      }
+
+      .misi-card li:hover {
+        color: #5c0f1d;
+
+        transform: translateX(4px);
+      }
+
+      /* =========================
+         MAP
+      ========================= */
+
+      .map-wrapper {
+        margin-top: 40px;
+
+        display: grid;
+
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+
+        gap: 30px;
+      }
+
+      .map-card,
+      .location-card {
+        background: white;
+
+        border-radius: 32px;
+
+        overflow: hidden;
+
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.07);
+
+        transition: 0.4s;
+      }
+
+      .map-card:hover,
+      .location-card:hover {
+        transform: translateY(-8px);
+
+        box-shadow: 0 20px 45px rgba(92, 15, 29, 0.12);
+      }
+
+      .map-title {
+        padding: 25px 30px 15px;
+      }
+
+      .map-title h3 {
+        color: #5c0f1d;
+        font-size: 26px;
+        margin-bottom: 8px;
+      }
+
+      .map-title p {
+        color: #666;
+        line-height: 1.8;
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+
+      iframe {
+        width: 100%;
+        height: 350px;
+        border: none;
+      }
+
+      /* =========================
+         FOOTER
+      ========================= */
+
+      footer {
+        margin-top: 80px;
+
+        background: linear-gradient(
+          135deg,
+          #4a0c18 0%,
+          #5c0f1d 45%,
+          #7a1f2b 100%
+        );
+
+        color: white;
+
+        position: relative;
+
+        overflow: hidden;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        gap: 30px;
+
+        padding: 32px 8% 22px;
+      }
+
+      .footer-box {
+        flex: 1;
+        min-width: 180px;
+      }
+
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        margin-bottom: 14px;
+      }
+
+      .footer-logo img {
+        width: 42px;
+      }
+
+      .footer-box h4 {
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+
+      .footer-box p,
+      .footer-box a {
+        color: #f3dfe4;
+
+        text-decoration: none;
+
+        line-height: 1.7;
+
+        font-size: 13px;
+      }
+
+      .footer-box a {
+        display: block;
+        margin-bottom: 10px;
+        transition: 0.3s;
+      }
+
+      .footer-box a:hover {
+        color: #7dd3fc;
+        transform: translateX(5px);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+        padding: 12px 8%;
+
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-bottom p {
+        font-size: 12px;
+      }
+      .map-btn,
+      .map-btn:visited,
+      .map-btn:active {
+        color: white;
+
+        text-decoration: none;
+      }
+
+      /* =========================
+         FLOAT BUTTON
+      ========================= */
+
+      .whatsapp-float {
+        position: fixed;
+
+        right: 25px;
+        bottom: 95px;
+
+        width: 62px;
+        height: 62px;
+
+        border-radius: 50%;
+
+        background: white;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+
+        z-index: 999;
+
+        animation: pulse 2s infinite;
+      }
+
+      .whatsapp-float img {
+        width: 34px;
+      }
+
+      .top-btn {
+        position: fixed;
+
+        right: 25px;
+        bottom: 20px;
+
+        width: 55px;
+        height: 55px;
+
+        border-radius: 14px;
+
+        background: white;
+
+        color: #5c0f1d;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 24px;
+
+        text-decoration: none;
+
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+        z-index: 999;
+      }
+
+      /* =========================
+         REVEAL ANIMATION
+      ========================= */
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(70px);
+        transition: all 1s ease;
+      }
+
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* =========================
+         ANIMATION
+      ========================= */
+
+      @keyframes fadeHero {
+        from {
+          opacity: 0;
+          transform: translate(-50%, -40%);
+        }
+
+        to {
+          opacity: 1;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      @keyframes zoomHero {
+        0% {
+          transform: scale(1);
+        }
+
+        50% {
+          transform: scale(1.05);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+        }
+
+        70% {
+          box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+        }
+
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
+      }
+
+      @media (max-width: 992px) {
+        header {
+          padding: 16px 5%;
+        }
+
+        nav {
+          gap: 14px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero-text h2 {
+          font-size: 44px;
+        }
+
+        .hero-text p {
+          font-size: 15px;
+        }
+
+        .container {
+          padding: 80px 5%;
+        }
+
+        .map-wrapper {
+          grid-template-columns: 1fr;
+        }
+
+        .misi-container {
+          grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 14px;
+          padding: 16px 5%;
+        }
+
+        .logo {
+          width: 100%;
+        }
+
+        .logo img {
+          width: 50px;
+        }
+
+        .logo h1 {
+          font-size: 18px;
+        }
+
+        .logo p {
+          font-size: 10px;
+        }
+
+        nav {
+          width: 100%;
+          justify-content: flex-start;
+          overflow-x: auto;
+          padding-bottom: 6px;
+          gap: 12px;
+        }
+
+        nav::-webkit-scrollbar {
+          display: none;
+        }
+
+        nav a {
+          font-size: 13px;
+          white-space: nowrap;
+        }
+
+        .btn-nav {
+          padding: 10px 20px;
+        }
+
+        .hero {
+          height: 75vh;
+        }
+
+        .hero-text {
+          width: 90%;
+        }
+
+        .hero-badge {
+          font-size: 12px;
+          padding: 8px 16px;
+        }
+
+        .hero-text h2 {
+          font-size: 34px;
+          line-height: 1.3;
+        }
+
+        .hero-text p {
+          font-size: 14px;
+          line-height: 1.8;
+        }
+
+        .title {
+          margin-bottom: 40px;
+        }
+
+        .title h2 {
+          font-size: 30px;
+        }
+
+        .card,
+        .visi-box,
+        .misi-card,
+        .map-card,
+        .location-card {
+          padding: 24px;
+          border-radius: 24px;
+        }
+
+        .card h3,
+        .visi-box h3,
+        .map-title h3 {
+          font-size: 24px;
+        }
+
+        .card p,
+        .visi-box p,
+        .misi-card li,
+        .map-title p {
+          font-size: 14px;
+          line-height: 1.9;
+        }
+
+        .visi-text {
+          font-size: 16px;
+        }
+
+        .icon-box,
+        .misi-icon {
+          width: 55px;
+          height: 55px;
+          font-size: 24px;
+        }
+
+        iframe {
+          height: 280px;
+        }
+
+        .footer-container {
+          flex-direction: column;
+          gap: 24px;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
+          gap: 8px;
+          text-align: center;
+        }
+
+        .whatsapp-float {
+          width: 56px;
+          height: 56px;
+          right: 18px;
+          bottom: 85px;
+        }
+
+        .whatsapp-float img {
+          width: 30px;
+        }
+
+        .top-btn {
+          width: 50px;
+          height: 50px;
+          right: 18px;
+          bottom: 18px;
+          font-size: 20px;
+        }
+
+        .dropdown-content {
+          min-width: 190px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero {
+          height: 68vh;
+        }
+
+        .hero-text h2 {
+          font-size: 28px;
+        }
+
+        .hero-text p {
+          font-size: 13px;
+        }
+
+        .container {
+          padding: 70px 5%;
+        }
+
+        .card,
+        .visi-box,
+        .misi-card,
+        .map-card,
+        .location-card {
+          padding: 20px;
+        }
+
+        .card h3,
+        .visi-box h3,
+        .map-title h3 {
+          font-size: 22px;
+        }
+
+        .title h2 {
+          font-size: 26px;
+        }
+
+        .map-btn {
+          width: 100%;
+          text-align: center;
+        }
+
+        iframe {
+          height: 240px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+
+    <header id="navbar">
+      <div class="logo">
+        <img src="assets/logo.png" />
+
+        <div>
+          <h1>Desa Bondolharjo</h1>
+
+          <p>Kec. Punggelan, Kab. Banjarnegara, Prov. Jawa Tengah</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="index.html">Beranda</a>
+
+        <div class="dropdown">
+          <a href="profil.html" class="active">Profil Desa ▾</a>
+
+          <div class="dropdown-content">
+            <a href="#tentang">Tentang Desa</a>
+            <a href="#sejarah">Sejarah</a>
+            <a href="#visi-misi">Visi & Misi</a>
+            <a href="#peta">Peta Desa</a>
+          </div>
+        </div>
+
+        <a href="struktur.html"> Struktur </a>
+
+        <a href="statistik.html"> Statistik </a>
+
+        <a href="umkm.html"> UMKM </a>
+
+        <a href="galeri.html"> Galeri </a>
+
+        <a href="layanan.html" class="btn-nav"> Layanan </a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+
+    <section class="hero">
+      <img src="assets/bg.jpg" />
+
+      <div class="overlay"></div>
+
+      <div class="hero-text">
+        <h2>Profil Desa Bondolharjo</h2>
+
+        <p>
+          Mengenal sejarah, visi, misi, dan lokasi Desa Bondolharjo Kabupaten
+          Banjarnegara.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+
+    <section class="container" id="tentang">
+      <div class="title reveal">
+        <h2>Tentang Desa</h2>
+        <div class="line"></div>
+      </div>
+      <div class="card">
+        <h3>Tentang Desa Bondolharjo</h3>
+
+        <p>
+          Desa Bondolharjo merupakan salah satu desa yang berada di Kecamatan
+          Punggelan, Kabupaten Banjarnegara, Provinsi Jawa Tengah. Desa ini
+          dikenal sebagai wilayah yang memiliki suasana pedesaan yang asri,
+          masyarakat yang ramah, serta budaya gotong royong yang masih terjaga
+          hingga saat ini.
+
+          <br /><br />
+
+          Secara geografis, Desa Bondolharjo berada di bagian utara Kabupaten
+          Banjarnegara dan menjadi salah satu wilayah yang memiliki potensi di
+          bidang pertanian, perkebunan, serta pengembangan UMKM masyarakat desa.
+          Mayoritas masyarakat bekerja sebagai petani, pedagang, dan pelaku
+          usaha kecil menengah.
+
+          <br /><br />
+
+          Selain memiliki potensi sumber daya alam dan masyarakat yang aktif,
+          Desa Bondolharjo juga terus berupaya meningkatkan kualitas pelayanan
+          publik, pembangunan infrastruktur, pendidikan, kesehatan, serta
+          pemberdayaan masyarakat demi terciptanya desa yang maju, mandiri, dan
+          sejahtera.
+
+          <br /><br />
+
+          Website resmi Desa Bondolharjo hadir sebagai media informasi dan
+          pelayanan digital untuk memudahkan masyarakat dalam memperoleh
+          informasi desa secara cepat, transparan, dan modern.
+        </p>
+      </div>
+
+      <div class="card reveal" id="sejarah">
+        <h3>Sejarah Desa Bondolharjo</h3>
+
+        <p>
+          Sejarah Desa Bondolharjo berasal dari cerita turun-temurun yang masih
+          dipercaya dan diceritakan oleh masyarakat hingga saat ini. Konon, nama
+          Bondolharjo memiliki makna harapan akan kehidupan masyarakat yang
+          makmur dan sejahtera di masa mendatang. Nama “Bondolharjo” terdiri
+          dari dua kata, yaitu “Bondol” yang berarti wilayah atau alam, dan
+          “Harjo” yang berarti raharja atau sejahtera. Nama tersebut diberikan
+          pada masa Sunan Giri berdasarkan wasiat serta kesepakatan masyarakat
+          setempat.
+          <br /><br />
+
+          Secara geografis, Desa Bondolharjo terletak di bagian barat laut
+          Kabupaten Banjarnegara dan menjadi salah satu pintu masuk wilayah
+          Kabupaten Banjarnegara dari arah utara. Letaknya yang strategis
+          membuat desa ini memiliki peranan penting sebagai jalur penghubung
+          antarwilayah di Kecamatan Punggelan.
+          <br /><br />
+
+          Selain asal-usul nama desa, masyarakat Bondolharjo juga mengenal
+          sebuah cerita legenda yang berkaitan dengan salah satu tempat yang
+          dianggap bersejarah, yaitu Panagan. Pada zaman dahulu, sebelum wilayah
+          ini berkembang seperti sekarang, diceritakan hiduplah seorang pemuda
+          bernama Panagan di kawasan sekitar Sungai Pekacangan dan kaki Gunung
+          Kliwonan. Panagan dikenal sebagai sosok yang memiliki kedekatan dengan
+          ular dan sering bermain bersama ular-ular di sekitarnya sejak kecil.
+          <br /><br />
+
+          Seiring berjalannya waktu, Panagan tumbuh menjadi pemuda yang gagah
+          dan dikenal oleh masyarakat sekitar. Suatu hari, ia jatuh cinta kepada
+          seorang gadis dari daerah Kalijoho. Hubungan mereka semakin dekat
+          hingga Panagan berniat mempersunting gadis tersebut. Namun, ayah sang
+          gadis memberikan syarat yang sangat berat, yaitu Panagan harus
+          memindahkan aliran Sungai Pekacangan ke arah Kalijoho.
+          <br /><br />
+
+          Dengan tekad yang kuat, Panagan menerima syarat tersebut. Konon, pada
+          malam purnama, ia dibantu oleh ular-ular yang dipercaya memiliki
+          kekuatan gaib untuk memindahkan aliran sungai. Dalam waktu semalam,
+          mereka bekerja keras mengubah arah aliran Sungai Pekacangan dari
+          bendungan Brengkel menuju arah yang sekarang. Namun, ketika pekerjaan
+          hampir selesai, ayah sang gadis yang sebenarnya tidak merestui
+          hubungan mereka melakukan tipu daya dengan menebarkan garam di aliran
+          sungai. Hal tersebut membuat ular-ular yang membantu Panagan
+          menghilang sehingga pekerjaan tidak dapat diselesaikan dengan
+          sempurna.
+          <br /><br />
+          Akibat kejadian tersebut, aliran sungai menjadi tidak beraturan dan
+          meninggalkan tikungan tajam di beberapa bagian wilayah yang hingga
+          kini masih dikenal masyarakat. Cerita legenda Panagan kemudian menjadi
+          bagian dari sejarah dan budaya lisan masyarakat Desa Bondolharjo yang
+          diwariskan dari generasi ke generasi sebagai bentuk kekayaan tradisi
+          dan kearifan lokal desa.
+        </p>
+      </div>
+
+      <!-- VISI MISI -->
+
+      <section class="visi-misi-section" id="visi-misi">
+        <div class="title reveal">
+          <h2>Visi & Misi Desa Bondolharjo</h2>
+          <div class="line"></div>
+        </div>
+
+        <!-- VISI -->
+
+        <div class="visi-box reveal">
+          <div class="icon-box">✨</div>
+
+          <h3>Visi Penyelenggaraan Pemerintahan Desa</h3>
+
+          <p>
+            Visi Penyelenggaraan Pemerintahan Desa dalam RPJM Desa Tahun
+            2020–2025 merupakan visi Kepala Desa yang disampaikan saat proses
+            pemilihan Kepala Desa.
+          </p>
+
+          <p class="visi-text">
+            “Terbangunnya tata kelola pemerintahan desa yang baik dan bersih
+            guna mewujudkan kehidupan masyarakat desa yang adil, makmur,
+            sejahtera, serta bermartabat.”
+          </p>
+
+          <p>
+            Kebijakan penyelenggaraan pemerintahan Desa Bondolharjo menjadi
+            pedoman dalam melaksanakan program dan kegiatan pembangunan desa.
+          </p>
+        </div>
+
+        <!-- MISI -->
+
+        <div class="title reveal">
+          <h2>Misi Desa Bondolharjo</h2>
+          <div class="line"></div>
+        </div>
+
+        <div class="misi-container">
+          <div class="misi-card reveal">
+            <div class="misi-icon">🏗️</div>
+
+            <h3>Pembangunan Fisik</h3>
+
+            <ul>
+              <li>Transparansi sumber keuangan dan pengeluaran desa.</li>
+
+              <li>Pemerataan pembangunan fisik di seluruh wilayah desa.</li>
+
+              <li>
+                Pelaksanaan pembangunan berdasarkan musyawarah masyarakat.
+              </li>
+            </ul>
+          </div>
+
+          <div class="misi-card reveal">
+            <div class="misi-icon">🏛️</div>
+
+            <h3>Bidang Pemerintahan</h3>
+
+            <ul>
+              <li>Optimalisasi pelayanan masyarakat desa.</li>
+
+              <li>Reformasi sistem kerja aparatur desa.</li>
+
+              <li>
+                Meningkatkan kerja sama dengan lembaga desa dan masyarakat.
+              </li>
+            </ul>
+          </div>
+
+          <div class="misi-card reveal">
+            <div class="misi-icon">🕌</div>
+
+            <h3>Bidang Keagamaan</h3>
+
+            <ul>
+              <li>Meningkatkan kegiatan keagamaan masyarakat.</li>
+
+              <li>Menjaga kerukunan dan toleransi beragama.</li>
+
+              <li>Melestarikan tradisi keagamaan desa.</li>
+            </ul>
+          </div>
+
+          <div class="misi-card reveal">
+            <div class="misi-icon">🤝</div>
+
+            <h3>Bidang Sosial</h3>
+
+            <ul>
+              <li>Meningkatkan peran pemuda dalam masyarakat.</li>
+
+              <li>Mengutamakan musyawarah mufakat antar warga.</li>
+
+              <li>Menjalin kerja sama antar tokoh masyarakat.</li>
+            </ul>
+          </div>
+
+          <div class="misi-card reveal">
+            <div class="misi-icon">🌿</div>
+
+            <h3>Kenyamanan & Ketertiban</h3>
+
+            <ul>
+              <li>Menjaga keamanan dan kenyamanan lingkungan.</li>
+
+              <li>Mewujudkan desa yang bersih dan sehat.</li>
+            </ul>
+          </div>
+
+          <div class="misi-card reveal">
+            <div class="misi-icon">⚽</div>
+
+            <h3>Bidang Olahraga</h3>
+
+            <ul>
+              <li>Mengembangkan kegiatan olahraga masyarakat.</li>
+
+              <li>Meningkatkan prestasi olahraga pemuda desa.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- MAP -->
+
+      <div class="map-wrapper" id="peta">
+        <div class="map-card reveal">
+          <div class="map-title">
+            <h3>Peta Desa Bondolharjo</h3>
+
+            <p>
+              Berikut merupakan peta wilayah Desa Bondolharjo, Kecamatan
+              Punggelan, Kabupaten Banjarnegara.
+            </p>
+          </div>
+
+          <iframe
+            src="https://www.google.com/maps?q=Bondolharjo,Banjarnegara&output=embed"
+          >
+          </iframe>
+
+          <a
+            href="https://www.google.com/maps?q=Bondolharjo,Banjarnegara&output=embed"
+            class="map-btn"
+            target="_blank"
+          >
+            Buka Peta Desa
+          </a>
+        </div>
+
+        <div class="location-card reveal">
+          <div class="map-title">
+            <h3>Lokasi Kantor Desa</h3>
+
+            <p>
+              <b>
+                Jl. Raya Ps. Paing Bedagas No.1, Dagan, Bondolharjo,
+                Banjarnegara, Jawa Tengah 53462
+              </b>
+            </p>
+          </div>
+
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.922152448957!2d109.62329147463862!3d-7.362623192646479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aaa5c8ea1018d%3A0xd79666f91fbc8188!2sKantor%20Desa%20Bondolharjo!5e0!3m2!1sen!2sid!4v1779657006573!5m2!1sen!2sid"
+            loading="lazy"
+          >
+          </iframe>
+          <a
+            href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3956.922152448957!2d109.62329147463862!3d-7.362623192646479!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7aaa5c8ea1018d%3A0xd79666f91fbc8188!2sKantor%20Desa%20Bondolharjo!5e0!3m2!1sen!2sid!4v1779657006573!5m2!1sen!2sid"
+            loading="lazy"
+            class="map-btn"
+            target="_blank"
+          >
+            Buka Lokasi Kantor
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-box">
+          <div class="footer-logo">
+            <img src="assets/logo.png" />
+
+            <div>
+              <h3>Desa Bondolharjo</h3>
+
+              <p>
+                Kecamatan Punggelan, Kabupaten Banjarnegara, Provinsi Jawa
+                Tengah, Kode Pos 53462
+              </p>
+            </div>
+          </div>
+
+          <p>
+            Website resmi Desa Bondolharjo sebagai pusat informasi dan pelayanan
+            masyarakat desa.
+          </p>
+        </div>
+
+        <div class="footer-box">
+          <h4>Hubungi Kami</h4>
+
+          <a
+            href="https://maps.google.com/?q=Bondolharjo,Banjarnegara"
+            target="_blank"
+          >
+            📍 Bondolharjo, Punggelan, Banjarnegara
+          </a>
+
+          <a href="mailto:desabondolharjo@gmail.com">
+            📧 desabondolharjo@gmail.com
+          </a>
+
+          <a href="https://wa.me/6282220010959" target="_blank">
+            📞 082220010959
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Desa Bondolharjo</p>
+
+        <p>Website Desa Bondolharjo</p>
+      </div>
+    </footer>
+
+    <!-- FLOAT BUTTON -->
+
+    <a href="https://wa.me/6282220010959" class="whatsapp-float">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" />
+    </a>
+
+    <a href="#" class="top-btn">↑</a>
+
+    <!-- SCRIPT -->
+
+    <script>
+      const navbar = document.getElementById("navbar");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // REVEAL ANIMATION
+
+      const reveals = document.querySelectorAll(".reveal");
+
+      function revealOnScroll() {
+        reveals.forEach((el) => {
+          const windowHeight = window.innerHeight;
+          const revealTop = el.getBoundingClientRect().top;
+
+          if (revealTop < windowHeight - 100) {
+            el.classList.add("active");
+          }
+        });
+      }
+
+      window.addEventListener("scroll", revealOnScroll);
+
+      revealOnScroll();
+    </script>
+  </body>
+</html>

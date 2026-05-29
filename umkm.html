@@ -1,0 +1,2789 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>UMKM Desa Bondolharjo</title>
+
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- AOS -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background: #f7f3f4;
+        overflow-x: hidden;
+        color: #333;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(214, 51, 132, 0.08),
+            transparent 30%
+          ),
+          radial-gradient(
+            circle at bottom right,
+            rgba(92, 15, 29, 0.08),
+            transparent 30%
+          );
+
+        z-index: -1;
+      }
+
+      /* =========================
+          NAVBAR
+       ========================= */
+
+      header {
+        width: 100%;
+        padding: 18px 8%;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        position: fixed;
+        top: 0;
+        left: 0;
+
+        z-index: 999;
+
+        transition:
+          background 0.4s ease,
+          box-shadow 0.4s ease,
+          backdrop-filter 0.4s ease,
+          padding 0.35s ease;
+
+        background: linear-gradient(
+          to bottom,
+          rgba(45, 8, 18, 0.92) 0%,
+          rgba(92, 15, 29, 0.68) 55%,
+          rgba(122, 31, 43, 0.15) 85%,
+          transparent 100%
+        );
+      }
+
+      header.scrolled {
+        padding: 14px 8%;
+
+        background: linear-gradient(
+          135deg,
+          rgba(74, 12, 24, 0.96),
+          rgba(92, 15, 29, 0.95),
+          rgba(122, 31, 43, 0.96)
+        );
+
+        backdrop-filter: blur(12px);
+
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .logo img {
+        width: 58px;
+      }
+
+      .logo h1 {
+        color: white;
+        font-size: 20px;
+        font-weight: 700;
+      }
+
+      .logo p {
+        color: #f7dbe2;
+        font-size: 11px;
+      }
+
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 28px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: white;
+        font-size: 15px;
+        font-weight: 500;
+
+        position: relative;
+
+        transition:
+          color 0.3s ease,
+          transform 0.3s ease;
+      }
+
+      nav a:hover {
+        color: #ffd9e6;
+        transform: translateY(-2px);
+      }
+
+      nav a.active::after {
+        content: "";
+
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+
+        width: 100%;
+        height: 2px;
+
+        border-radius: 999px;
+
+        background: linear-gradient(90deg, #ffd6e2, white);
+      }
+
+      .btn-nav {
+        padding: 12px 28px;
+        border-radius: 999px;
+
+        background: linear-gradient(135deg, #5c0f1d, #d63384);
+      }
+
+      /* =========================
+          HERO
+       ========================= */
+
+      .hero {
+        position: relative;
+        height: 65vh;
+        overflow: hidden;
+      }
+
+      .hero img {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        transform: scale(1.05);
+
+        animation: heroMove 14s ease-in-out infinite;
+      }
+
+      .overlay {
+        position: absolute;
+        inset: 0;
+
+        background: linear-gradient(
+          to bottom,
+          rgba(45, 8, 18, 0.8),
+          rgba(0, 0, 0, 0.45)
+        );
+      }
+
+      .hero-text {
+        position: absolute;
+
+        top: 50%;
+        left: 50%;
+
+        transform: translate(-50%, -50%);
+
+        text-align: center;
+        color: white;
+
+        width: 90%;
+      }
+
+      .hero-text h2 {
+        font-size: 58px;
+        margin-bottom: 18px;
+        font-weight: 800;
+
+        animation: heroTitle 1s ease;
+      }
+
+      .hero-text p {
+        font-size: 17px;
+        line-height: 1.9;
+
+        max-width: 800px;
+        margin: auto;
+
+        animation: heroDesc 1.4s ease;
+      }
+
+      /* =========================
+          CONTAINER
+       ========================= */
+
+      .container {
+        max-width: 1400px;
+        margin: auto;
+        padding: 90px 6%;
+      }
+
+      /* =========================
+          SEARCH
+       ========================= */
+
+      .search-box {
+        max-width: 700px;
+        margin: auto auto 40px;
+      }
+
+      .search-box input {
+        width: 100%;
+
+        padding: 20px 28px;
+
+        border: none;
+        outline: none;
+
+        border-radius: 999px;
+
+        background: white;
+
+        font-size: 15px;
+
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+        transition:
+          transform 0.35s ease,
+          box-shadow 0.35s ease,
+          border 0.35s ease;
+      }
+
+      .search-box input:focus {
+        transform: translateY(-4px);
+
+        box-shadow:
+          0 18px 40px rgba(214, 51, 132, 0.15),
+          0 0 0 4px rgba(214, 51, 132, 0.08);
+      }
+
+      /* =========================
+          FILTER
+       ========================= */
+
+      .filter-wrap {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        gap: 14px;
+
+        margin-bottom: 50px;
+      }
+
+      .filter-btn {
+        border: none;
+
+        padding: 13px 24px;
+
+        border-radius: 999px;
+
+        cursor: pointer;
+
+        background: white;
+        color: #5c0f1d;
+
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+
+        position: relative;
+        overflow: hidden;
+
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+
+        transition:
+          transform 0.3s ease,
+          background 0.3s ease,
+          color 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+
+      .filter-btn::before {
+        content: "";
+
+        position: absolute;
+        inset: 0;
+
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.28),
+          transparent
+        );
+
+        transform: translateX(-100%);
+
+        transition: transform 0.7s ease;
+      }
+
+      .filter-btn:hover::before {
+        transform: translateX(100%);
+      }
+
+      .filter-btn:hover {
+        transform: translateY(-4px);
+      }
+
+      .filter-btn.active {
+        background: linear-gradient(135deg, #5c0f1d, #d63384);
+
+        color: white;
+
+        transform: translateY(-2px);
+
+        box-shadow: 0 15px 30px rgba(214, 51, 132, 0.22);
+      }
+
+      /* =========================
+          GRID
+       ========================= */
+
+      .umkm-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+        gap: 28px;
+
+        align-items: stretch;
+      }
+
+      /* =========================
+          CARD
+       ========================= */
+
+      .umkm-card {
+        position: relative;
+
+        background: rgba(255, 255, 255, 0.92);
+
+        border-radius: 32px;
+
+        padding: 30px 24px;
+
+        overflow: hidden;
+
+        backdrop-filter: blur(10px);
+
+        border: 1px solid rgba(255, 255, 255, 0.5);
+
+        opacity: 0;
+
+        will-change: transform, opacity;
+
+        transform: translate3d(0, 40px, 0);
+
+        backface-visibility: hidden;
+
+        transition:
+          transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+          box-shadow 0.45s ease,
+          opacity 0.45s ease,
+          filter 0.45s ease;
+
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      }
+
+      .umkm-card.show {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+
+      .umkm-card.hide {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0) scale(0.98);
+
+        pointer-events: none;
+      }
+
+      .umkm-card:hover {
+        transform: translate3d(0, -10px, 0) scale(1.02);
+
+        box-shadow:
+          0 20px 40px rgba(92, 15, 29, 0.18),
+          0 10px 24px rgba(214, 51, 132, 0.14);
+
+        filter: brightness(1.02);
+      }
+
+      .umkm-card::before {
+        content: "";
+
+        position: absolute;
+        top: -70px;
+        right: -70px;
+
+        width: 190px;
+        height: 190px;
+
+        border-radius: 50%;
+
+        background: linear-gradient(
+          135deg,
+          rgba(214, 51, 132, 0.12),
+          rgba(92, 15, 29, 0.08)
+        );
+
+        transition: transform 0.6s ease;
+      }
+
+      .umkm-card:hover::before {
+        transform: scale(1.2) rotate(15deg);
+      }
+
+      .umkm-card::after {
+        content: "";
+
+        position: absolute;
+        top: -120%;
+        left: -40%;
+
+        width: 60%;
+        height: 250%;
+
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.35),
+          transparent
+        );
+
+        transform: rotate(25deg);
+
+        opacity: 0;
+
+        transition:
+          left 0.8s ease,
+          opacity 0.6s ease;
+      }
+
+      .umkm-card:hover::after {
+        left: 120%;
+        opacity: 1;
+      }
+
+      /* =========================
+          BADGE
+       ========================= */
+
+      .badge {
+        position: relative;
+        z-index: 2;
+
+        display: inline-block;
+
+        padding: 10px 18px;
+
+        border-radius: 999px;
+
+        background: linear-gradient(135deg, #7a0f29, #d63384);
+
+        color: white;
+
+        font-size: 13px;
+        font-weight: 700;
+
+        margin-bottom: 22px;
+
+        animation: badgeFloat 3s ease-in-out infinite;
+      }
+
+      /* =========================
+          CARD TEXT
+       ========================= */
+
+      .umkm-card h3 {
+        position: relative;
+        z-index: 2;
+
+        font-size: 28px;
+        line-height: 1.2;
+
+        color: #5c0f1d;
+
+        margin-bottom: 14px;
+
+        font-weight: 800;
+      }
+
+      .umkm-card p {
+        position: relative;
+        z-index: 2;
+
+        color: #666;
+
+        line-height: 1.8;
+        font-size: 14px;
+      }
+
+      /* =========================
+          INFO
+       ========================= */
+
+      .umkm-info {
+        position: relative;
+        z-index: 2;
+
+        margin-top: 22px;
+        margin-bottom: 24px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .umkm-info span {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        padding: 12px 14px;
+
+        border-radius: 16px;
+
+        background: rgba(214, 51, 132, 0.05);
+
+        font-size: 13px;
+        color: #444;
+
+        transition:
+          transform 0.35s ease,
+          background 0.35s ease,
+          box-shadow 0.35s ease;
+      }
+
+      .umkm-card:hover .umkm-info span {
+        transform: translateX(6px);
+
+        background: rgba(214, 51, 132, 0.09);
+
+        box-shadow: 0 6px 16px rgba(214, 51, 132, 0.08);
+      }
+
+      /* =========================
+          BUTTON
+       ========================= */
+
+      .detail-btn {
+        position: relative;
+        z-index: 2;
+
+        width: 100%;
+
+        padding: 16px;
+
+        border: none;
+
+        border-radius: 18px;
+
+        background: linear-gradient(135deg, #7a0f29, #d63384);
+
+        color: white;
+
+        font-family: "Poppins", sans-serif;
+        font-weight: 600;
+        font-size: 15px;
+
+        cursor: pointer;
+
+        overflow: hidden;
+
+        transition:
+          transform 0.35s ease,
+          box-shadow 0.35s ease,
+          letter-spacing 0.35s ease;
+      }
+
+      .detail-btn::before {
+        content: "";
+
+        position: absolute;
+        top: 0;
+        left: -120%;
+
+        width: 100%;
+        height: 100%;
+
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.28),
+          transparent
+        );
+
+        transition: 0.75s ease;
+      }
+
+      .detail-btn:hover::before {
+        left: 120%;
+      }
+
+      .detail-btn:hover {
+        transform: translateY(-4px);
+
+        letter-spacing: 0.4px;
+
+        box-shadow: 0 14px 30px rgba(214, 51, 132, 0.24);
+      }
+
+      .detail-btn {
+        position: relative;
+        overflow: hidden;
+      }
+
+      .ripple {
+        position: absolute;
+
+        width: 12px;
+        height: 12px;
+
+        background: rgba(255, 255, 255, 0.5);
+
+        border-radius: 50%;
+
+        transform: scale(0);
+
+        animation: rippleEffect 0.6s linear;
+
+        pointer-events: none;
+      }
+
+      @keyframes rippleEffect {
+        to {
+          transform: scale(18);
+          opacity: 0;
+        }
+      }
+
+      /* =========================
+   SCROLL SHOW
+========================= */
+
+      .umkm-card {
+        opacity: 0;
+
+        transform: translateY(45px) scale(0.96);
+
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease,
+          box-shadow 0.4s ease;
+      }
+
+      .umkm-card.show {
+        opacity: 1;
+
+        transform: translateY(0) scale(1);
+      }
+
+      .umkm-card.hide {
+        opacity: 0;
+
+        transform: translateY(20px) scale(0.95);
+      }
+
+      /* =========================
+          MODAL
+       ========================= */
+
+      .modal {
+        position: fixed;
+        inset: 0;
+
+        background: rgba(0, 0, 0, 0.55);
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        padding: 20px;
+
+        z-index: 9999;
+
+        backdrop-filter: blur(6px);
+
+        opacity: 0;
+        visibility: hidden;
+
+        transition:
+          opacity 0.35s ease,
+          visibility 0.35s ease;
+      }
+
+      .modal.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .modal-content {
+        width: 100%;
+        max-width: 560px;
+
+        background: white;
+
+        border-radius: 35px;
+
+        padding: 42px 34px;
+
+        position: relative;
+
+        animation: modalPop 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      .close {
+        position: absolute;
+        top: 18px;
+        right: 22px;
+
+        font-size: 30px;
+
+        cursor: pointer;
+
+        color: #999;
+      }
+
+      .modal h2 {
+        font-size: 34px;
+        color: #5c0f1d;
+
+        margin-bottom: 24px;
+      }
+
+      .modal-item {
+        margin-bottom: 18px;
+
+        padding: 16px 18px;
+
+        border-radius: 18px;
+
+        background: #faf7f8;
+
+        line-height: 1.8;
+      }
+
+      .modal-item span {
+        display: block;
+
+        font-weight: 700;
+
+        color: #5c0f1d;
+
+        margin-bottom: 5px;
+      }
+
+      /* =========================
+          FOOTER
+       ========================= */
+
+      footer {
+        margin-top: 80px;
+
+        background: linear-gradient(
+          135deg,
+          #4a0c18 0%,
+          #5c0f1d 45%,
+          #7a1f2b 100%
+        );
+
+        color: white;
+
+        position: relative;
+
+        overflow: hidden;
+      }
+
+      .footer-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        gap: 30px;
+
+        padding: 32px 8% 22px;
+      }
+
+      .footer-box {
+        flex: 1;
+        min-width: 180px;
+      }
+
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+
+        margin-bottom: 14px;
+      }
+
+      .footer-logo img {
+        width: 42px;
+      }
+
+      .footer-box h4 {
+        margin-bottom: 14px;
+        color: #ffffff;
+      }
+
+      .footer-box p,
+      .footer-box a {
+        color: #f3dfe4;
+
+        text-decoration: none;
+
+        line-height: 1.7;
+
+        font-size: 13px;
+      }
+
+      .footer-box a {
+        display: block;
+        margin-bottom: 10px;
+        transition: 0.3s;
+        padding: 4px 0;
+        border-radius: 8px;
+      }
+
+      .footer-box a:hover {
+        color: #7dd3fc;
+        transform: translateX(5px);
+      }
+
+      .footer-box a:active {
+        color: #38bdf8;
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+        padding: 12px 8%;
+
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      .footer-bottom p {
+        font-size: 12px;
+      }
+
+      /* =========================
+          FLOAT BUTTON
+       ========================= */
+
+      .whatsapp-float {
+        position: fixed;
+
+        right: 25px;
+        bottom: 95px;
+
+        width: 62px;
+        height: 62px;
+
+        border-radius: 50%;
+
+        background: white;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        z-index: 999;
+
+        animation: pulse 2s infinite;
+
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+
+        transition:
+          transform 0.35s ease,
+          box-shadow 0.35s ease;
+      }
+
+      .whatsapp-float:hover {
+        transform: translateY(-6px) scale(1.05);
+
+        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
+      }
+
+      .whatsapp-float img {
+        width: 34px;
+      }
+
+      .top-btn {
+        position: fixed;
+
+        right: 25px;
+        bottom: 20px;
+
+        width: 55px;
+        height: 55px;
+
+        border-radius: 14px;
+
+        background: white;
+        color: #5c0f1d;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 24px;
+
+        text-decoration: none;
+
+        z-index: 999;
+
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+        transition:
+          transform 0.35s ease,
+          box-shadow 0.35s ease;
+      }
+
+      .top-btn:hover {
+        transform: translateY(-6px) scale(1.05);
+
+        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
+      }
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-content {
+        position: absolute;
+
+        top: 50px;
+        left: 0;
+
+        width: 210px; /* sebelumnya 280px */
+
+        background: rgba(255, 255, 255, 0.96);
+
+        backdrop-filter: blur(14px);
+
+        border-radius: 22px;
+
+        padding: 10px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        opacity: 0;
+        visibility: hidden;
+
+        transform: translateY(10px);
+
+        transition: 0.3s ease;
+
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+
+        border: 1px solid rgba(255, 255, 255, 0.4);
+
+        z-index: 999;
+      }
+
+      /* MUNCUL */
+
+      .dropdown:hover .dropdown-content {
+        opacity: 1;
+        visibility: visible;
+
+        transform: translateY(0);
+      }
+
+      /* ITEM */
+
+      .dropdown-content a {
+        color: #5c0f1d;
+
+        text-decoration: none;
+
+        padding: 12px 14px;
+
+        border-radius: 14px;
+
+        font-size: 14px;
+
+        font-weight: 500;
+
+        transition: 0.3s ease;
+      }
+
+      .dropdown-content a:hover {
+        background: linear-gradient(
+          135deg,
+          rgba(92, 15, 29, 0.08),
+          rgba(214, 51, 132, 0.08)
+        );
+
+        transform: translateX(4px);
+      }
+
+      .btn-nav {
+        padding: 12px 28px;
+
+        border-radius: 999px;
+
+        background: linear-gradient(135deg, #5c0f1d, #d63384);
+
+        transition: 0.4s;
+      }
+
+      .btn-nav:hover {
+        transform: translateY(-3px);
+
+        box-shadow: 0 10px 20px rgba(92, 15, 29, 0.35);
+      }
+      /* =========================
+   FILTER BUTTON ANIMATION
+========================= */
+
+      .filter-btn {
+        position: relative;
+        overflow: hidden;
+
+        transition:
+          transform 0.3s ease,
+          background 0.35s ease,
+          color 0.35s ease,
+          box-shadow 0.35s ease;
+      }
+
+      .filter-btn:active {
+        transform: scale(0.95);
+      }
+
+      .filter-btn.active {
+        animation: activeFilter 0.45s ease;
+      }
+
+      @keyframes activeFilter {
+        0% {
+          transform: scale(0.9);
+        }
+
+        50% {
+          transform: scale(1.08);
+        }
+
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* SHINE FILTER */
+
+      .filter-btn::after {
+        content: "";
+
+        position: absolute;
+        top: 0;
+        left: -120%;
+
+        width: 100%;
+        height: 100%;
+
+        background: linear-gradient(
+          120deg,
+          transparent,
+          rgba(255, 255, 255, 0.35),
+          transparent
+        );
+
+        transition: 0.7s ease;
+      }
+
+      .filter-btn:hover::after {
+        left: 120%;
+      }
+
+      /* =========================
+   MODAL SMOOTH ANIMATION
+========================= */
+
+      .modal {
+        opacity: 0;
+        visibility: hidden;
+
+        transition:
+          opacity 0.35s ease,
+          visibility 0.35s ease;
+
+        backdrop-filter: blur(0px);
+      }
+
+      .modal.show {
+        opacity: 1;
+        visibility: visible;
+
+        backdrop-filter: blur(8px);
+      }
+
+      .modal-content {
+        transform: translateY(40px) scale(0.88);
+
+        opacity: 0;
+
+        transition:
+          transform 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+          opacity 0.4s ease;
+      }
+
+      .modal.show .modal-content {
+        transform: translateY(0) scale(1);
+
+        opacity: 1;
+      }
+
+      /* MODAL ITEM ANIMATION */
+
+      .modal-item {
+        opacity: 0;
+
+        transform: translateY(15px);
+
+        animation: modalItem 0.5s ease forwards;
+      }
+
+      .modal-item:nth-child(2) {
+        animation-delay: 0.1s;
+      }
+
+      .modal-item:nth-child(3) {
+        animation-delay: 0.2s;
+      }
+
+      .modal-item:nth-child(4) {
+        animation-delay: 0.3s;
+      }
+
+      @keyframes modalItem {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* TITLE POP */
+
+      #modalNama {
+        animation: modalTitle 0.5s ease;
+      }
+
+      @keyframes modalTitle {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* CLOSE BUTTON */
+
+      .close {
+        transition:
+          transform 0.3s ease,
+          color 0.3s ease;
+      }
+
+      .close:hover {
+        transform: rotate(90deg) scale(1.1);
+
+        color: #d63384;
+      }
+
+      /* =========================
+          ANIMATION
+       ========================= */
+
+      @keyframes heroMove {
+        0% {
+          transform: scale(1.05) translateY(0);
+        }
+
+        50% {
+          transform: scale(1.12) translateY(-8px);
+        }
+
+        100% {
+          transform: scale(1.05) translateY(0);
+        }
+      }
+
+      @keyframes heroTitle {
+        from {
+          opacity: 0;
+          transform: translateY(35px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes heroDesc {
+        from {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes badgeFloat {
+        0% {
+          transform: translateY(0);
+        }
+
+        50% {
+          transform: translateY(-4px);
+        }
+
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes modalPop {
+        from {
+          opacity: 0;
+          transform: translateY(30px) scale(0.9);
+        }
+
+        to {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
+        }
+
+        70% {
+          box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+        }
+
+        100% {
+          box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+        }
+      }
+
+      /* ===================================
+   RESPONSIVE MOBILE & TABLET
+=================================== */
+
+      @media (max-width: 992px) {
+        header {
+          padding: 16px 5%;
+        }
+
+        .logo img {
+          width: 50px;
+        }
+
+        .logo h1 {
+          font-size: 18px;
+        }
+
+        nav {
+          gap: 18px;
+        }
+
+        nav a {
+          font-size: 14px;
+        }
+
+        .hero {
+          height: 55vh;
+        }
+
+        .hero-text h2 {
+          font-size: 48px;
+        }
+
+        .hero-text p {
+          font-size: 15px;
+          line-height: 1.8;
+        }
+
+        .container {
+          padding: 80px 5%;
+        }
+
+        .umkm-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* =========================
+   MOBILE
+========================= */
+
+      @media (max-width: 768px) {
+        header {
+          padding: 14px 5%;
+        }
+
+        /* NAVBAR */
+
+        nav {
+          display: none;
+        }
+
+        .logo {
+          gap: 10px;
+        }
+
+        .logo img {
+          width: 42px;
+        }
+
+        .logo h1 {
+          font-size: 16px;
+        }
+
+        .logo p {
+          font-size: 10px;
+          line-height: 1.4;
+        }
+
+        /* HERO */
+
+        .hero {
+          height: 50vh;
+        }
+
+        .hero-text {
+          width: 92%;
+        }
+
+        .hero-text h2 {
+          font-size: 34px;
+          line-height: 1.2;
+        }
+
+        .hero-text p {
+          font-size: 14px;
+          line-height: 1.7;
+        }
+
+        /* CONTENT */
+
+        .container {
+          padding: 65px 5%;
+        }
+
+        .search-box input {
+          padding: 16px 22px;
+          font-size: 14px;
+        }
+
+        .filter-wrap {
+          gap: 10px;
+        }
+
+        .filter-btn {
+          padding: 11px 18px;
+          font-size: 13px;
+        }
+
+        /* GRID */
+
+        .umkm-grid {
+          grid-template-columns: 1fr;
+          gap: 22px;
+        }
+
+        /* CARD */
+
+        .umkm-card {
+          border-radius: 26px;
+          padding: 24px 20px;
+        }
+
+        .umkm-card h3 {
+          font-size: 24px;
+        }
+
+        .umkm-card p {
+          font-size: 13px;
+          line-height: 1.7;
+        }
+
+        .umkm-info span {
+          font-size: 12px;
+          padding: 11px 13px;
+        }
+
+        .detail-btn {
+          padding: 14px;
+          font-size: 14px;
+        }
+
+        /* MODAL */
+
+        .modal-content {
+          padding: 32px 22px;
+          border-radius: 28px;
+        }
+
+        .modal h2 {
+          font-size: 28px;
+        }
+
+        .modal-item {
+          font-size: 14px;
+        }
+
+        /* FOOTER */
+
+        .footer-container {
+          flex-direction: column;
+          padding: 30px 5%;
+        }
+
+        .footer-bottom {
+          justify-content: center;
+          text-align: center;
+          gap: 8px;
+          padding: 14px 5%;
+        }
+
+        /* FLOAT BUTTON */
+
+        .whatsapp-float {
+          width: 56px;
+          height: 56px;
+          right: 18px;
+          bottom: 85px;
+        }
+
+        .whatsapp-float img {
+          width: 30px;
+        }
+
+        .top-btn {
+          width: 50px;
+          height: 50px;
+          right: 18px;
+          bottom: 18px;
+          font-size: 20px;
+        }
+      }
+
+      /* =========================
+   SMALL MOBILE
+========================= */
+
+      @media (max-width: 480px) {
+        .hero {
+          height: 46vh;
+        }
+
+        .hero-text h2 {
+          font-size: 28px;
+        }
+
+        .hero-text p {
+          font-size: 13px;
+        }
+
+        .search-box input {
+          padding: 15px 18px;
+        }
+
+        .filter-btn {
+          width: 100%;
+          text-align: center;
+        }
+
+        .umkm-card {
+          padding: 22px 18px;
+        }
+
+        .umkm-card h3 {
+          font-size: 22px;
+        }
+
+        .badge {
+          font-size: 12px;
+          padding: 8px 15px;
+        }
+
+        .modal-content {
+          padding: 28px 18px;
+        }
+
+        .modal h2 {
+          font-size: 24px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+
+    <header id="navbar">
+      <div class="logo">
+        <img src="assets/logo.png" />
+
+        <div>
+          <h1>Desa Bondolharjo</h1>
+
+          <p>Kec. Punggelan, Kab. Banjarnegara, Prov. Jawa Tengah</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="index.html">Beranda</a>
+        <div class="dropdown">
+          <a href="profil.html"> Profil Desa ▾ </a>
+
+          <div class="dropdown-content">
+            <a href="profil.html#tentang"> Tentang Desa </a>
+
+            <a href="profil.html#sejarah"> Sejarah </a>
+
+            <a href="profil.html#visi-misi"> Visi & Misi </a>
+
+            <a href="profil.html#peta"> Peta Desa </a>
+          </div>
+        </div>
+        <a href="struktur.html"> Struktur </a>
+
+        <a href="statistik.html"> Statistik </a>
+        <a href="umkm.html" class="active">UMKM</a>
+        <a href="galeri.html"> Galeri </a>
+        <a href="layanan.html" class="btn-nav">Layanan</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+
+    <section class="hero">
+      <img src="assets/bg.jpg" />
+
+      <div class="overlay"></div>
+
+      <div class="hero-text">
+        <h2>UMKM Desa Bondolharjo</h2>
+
+        <p>
+          Data pelaku usaha mikro, kecil dan menengah di Desa Bondolharjo
+          Kecamatan Punggelan Kabupaten Banjarnegara.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTENT -->
+
+    <section class="container">
+      <div class="search-box">
+        <input
+          type="text"
+          id="searchInput"
+          placeholder="Cari nama UMKM, jenis usaha, atau alamat..."
+        />
+      </div>
+
+      <div class="filter-wrap">
+        <button class="filter-btn active">Semua</button>
+        <button class="filter-btn">Kuliner</button>
+        <button class="filter-btn">Sembako</button>
+        <button class="filter-btn">Jasa</button>
+        <button class="filter-btn">Otomotif</button>
+        <button class="filter-btn">Fashion</button>
+        <button class="filter-btn">Pertanian</button>
+        <button class="filter-btn">Kesehatan</button>
+        <button class="filter-btn">Perdagangan</button>
+        <button class="filter-btn">Peternakan</button>
+      </div>
+
+      <div class="umkm-grid">
+        <!-- CONTOH CARD -->
+        <!-- DUPLIKASI CARD UMKM KAMU DI SINI -->
+
+        <div class="umkm-card" data-category="kuliner">
+          <span class="badge">Kuliner</span>
+
+          <h3>Julimah</h3>
+
+          <p>
+            Menyediakan berbagai makanan ringan yang lezat dan cocok untuk
+            camilan sehari-hari.
+          </p>
+
+          <div class="umkm-info">
+            <span>👤 Julimah</span>
+            <span>📍 Dusun Totogan RT 01/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Julimah',
+                'Menyediakan berbagai makanan ringan yang lezat dan cocok untuk camilan sehari-hari.',
+                'Dusun Totogan RT 01/RW 01',
+                'Kuliner',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 3 -->
+        <div class="umkm-card" data-category="fashion" data-aos="fade-up">
+          <span class="badge">Fashion</span>
+          <h3>Latif Junardi</h3>
+          <p>Jasa penjahit pakaian dan permak.</p>
+
+          <div class="umkm-info">
+            <span>👤 Latif Junardi</span>
+            <span>📍 Dusun Totogan RT 01/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Latif Junardi',
+                'Jasa penjahit pakaian dan permak untuk berbagai kebutuhan seperti seragam, pakaian harian, dan perbaikan pakaian.',
+                'Dusun Totogan RT 01/RW 01',
+                'Fashion',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 4 -->
+        <div class="umkm-card" data-category="sembako" data-aos="fade-up">
+          <span class="badge">Sembako</span>
+          <h3>Karsam</h3>
+          <p>Toko sembako dan kebutuhan rumah.</p>
+
+          <div class="umkm-info">
+            <span>👤 Karsam</span>
+            <span>📍 Dusun Totogan RT 01/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Karsam',
+                'Toko sembako yang menyediakan berbagai kebutuhan pokok dan perlengkapan rumah tangga sehari-hari.',
+                'Dusun Totogan RT 01/RW 01',
+                'Sembako',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 5 -->
+        <div class="umkm-card" data-category="kuliner" data-aos="fade-up">
+          <span class="badge">Kuliner</span>
+          <h3>Koningah</h3>
+          <p>Warung makan rumahan.</p>
+
+          <div class="umkm-info">
+            <span>👤 Koningah</span>
+            <span>📍 Dusun Totogan RT 01/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Koningah',
+                'Warung makan rumahan dengan aneka menu masakan khas rumahan yang lezat dan terjangkau.',
+                'Dusun Totogan RT 01/RW 01',
+                'Kuliner',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 6 -->
+        <div class="umkm-card" data-category="otomotif" data-aos="fade-up">
+          <span class="badge">Otomotif</span>
+          <h3>Wiwid</h3>
+          <p>Usaha pom mini desa.</p>
+
+          <div class="umkm-info">
+            <span>👤 Wiwid</span>
+            <span>📍 Dusun Totogan RT 01/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Wiwid',
+                'Usaha pom mini yang melayani penjualan bahan bakar eceran untuk masyarakat sekitar.',
+                'Dusun Totogan RT 01/RW 01',
+                'Otomotif',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 7 -->
+        <div class="umkm-card" data-category="kuliner" data-aos="fade-up">
+          <span class="badge">Kuliner</span>
+          <h3>Kodri</h3>
+          <p>Warung pecel</p>
+
+          <div class="umkm-info">
+            <span>👤 Kodri</span>
+            <span>📍 Dusun Totogan RT 01/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Kodri',
+                'Warung pecel dengan cita rasa khas desa Bondolharjo.',
+                'Dusun Totogan RT 01/RW 01',
+                'Kuliner',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 8 -->
+        <div class="umkm-card" data-category="pertanian" data-aos="fade-up">
+          <span class="badge">Pertanian</span>
+          <h3>Dewi</h3>
+          <p>Pupuk dan pakan ikan.</p>
+
+          <div class="umkm-info">
+            <span>👤 Dewi</span>
+            <span>📍 Dusun Totogan RT 01/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Dewi',
+                'Menjual pupuk pertanian dan pakan ikan untuk kebutuhan budidaya dan pertanian warga.',
+                'Dusun Totogan RT 01/RW 01',
+                'Pertanian',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 9 -->
+        <div class="umkm-card" data-category="kuliner" data-aos="fade-up">
+          <span class="badge">Kuliner</span>
+          <h3>Nihrom</h3>
+          <p>Dawet tradisional</p>
+
+          <div class="umkm-info">
+            <span>👤 Nihrom</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Nihrom',
+                'Menjual minuman dawet tradisional khas Banjarnegara yang segar dan alami.',
+                'Dusun Totogan RT 02/RW 01',
+                'Kuliner',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 10 -->
+        <div class="umkm-card" data-category="kesehatan" data-aos="fade-up">
+          <span class="badge">Kesehatan</span>
+          <h3>A. Suwanto</h3>
+          <p>Jamu tradisional herbal.</p>
+
+          <div class="umkm-info">
+            <span>👤 A. Suwanto</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'A. Suwanto',
+                'Produksi jamu tradisional herbal alami untuk menjaga kesehatan tubuh.',
+                'Dusun Totogan RT 02/RW 01',
+                'Kesehatan',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 11 -->
+        <div class="umkm-card" data-category="sembako" data-aos="fade-up">
+          <span class="badge">Sembako</span>
+          <h3>Daryanti</h3>
+          <p>Toko kebutuhan pokok masyarakat.</p>
+
+          <div class="umkm-info">
+            <span>👤 Daryanti</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Daryanti',
+                'Toko kebutuhan pokok yang menyediakan sembako dan kebutuhan harian masyarakat.',
+                'Dusun Totogan RT 02/RW 01',
+                'Sembako',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 12 -->
+        <div class="umkm-card" data-category="sembako" data-aos="fade-up">
+          <span class="badge">Sembako</span>
+          <h3>Dulhadi</h3>
+          <p>Usaha toko sembako harian.</p>
+
+          <div class="umkm-info">
+            <span>👤 Dulhadi</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Dulhadi',
+                'Usaha toko sembako harian dengan berbagai kebutuhan pokok masyarakat.',
+                'Dusun Totogan RT 02/RW 01',
+                'Sembako',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 13 -->
+        <div class="umkm-card" data-category="jasa" data-aos="fade-up">
+          <span class="badge">Jasa</span>
+          <h3>Narensyah</h3>
+          <p>Jasa pengecatan rumah dan bangunan.</p>
+
+          <div class="umkm-info">
+            <span>👤 Narensyah</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Narensyah',
+                'Melayani jasa pengecatan rumah dan bangunan dengan hasil rapi dan berkualitas.',
+                'Dusun Totogan RT 02/RW 01',
+                'Jasa',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 14 -->
+        <div class="umkm-card" data-category="otomotif" data-aos="fade-up">
+          <span class="badge">Otomotif</span>
+          <h3>Dede</h3>
+          <p>Bengkel motor.</p>
+
+          <div class="umkm-info">
+            <span>👤 Dede</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Dede',
+                'Bengkel motor yang melayani servis dan perawatan kendaraan roda dua.',
+                'Dusun Totogan RT 02/RW 01',
+                'Otomotif',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 15 -->
+        <div class="umkm-card" data-category="sembako" data-aos="fade-up">
+          <span class="badge">Sembako</span>
+          <h3>Ugi Wahyono</h3>
+          <p>Toko klontong desa.</p>
+
+          <div class="umkm-info">
+            <span>👤 Ugi Wahyono</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Ugi Wahyono',
+                'Toko klontong yang menjual kebutuhan rumah tangga dan aneka jajanan.',
+                'Dusun Totogan RT 02/RW 01',
+                'Sembako',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 16 -->
+        <div class="umkm-card" data-category="perdagangan" data-aos="fade-up">
+          <span class="badge">Perdagangan</span>
+          <h3>Sidik Nuryanto D</h3>
+          <p>Pedagang buah segar.</p>
+
+          <div class="umkm-info">
+            <span>👤 Sidik Nuryanto D</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Sidik Nuryanto D',
+                'Pedagang buah yang menyediakan berbagai buah segar lokal.',
+                'Dusun Totogan RT 02/RW 01',
+                'Perdagangan',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 17 -->
+        <div class="umkm-card" data-category="kuliner" data-aos="fade-up">
+          <span class="badge">Kuliner</span>
+          <h3>Barliyah</h3>
+          <p>Makanan ringan rumahan.</p>
+
+          <div class="umkm-info">
+            <span>👤 Barliyah</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Barliyah',
+                'Produksi camilan dan makanan ringan rumahan dengan cita rasa khas.',
+                'Dusun Totogan RT 02/RW 01',
+                'Kuliner',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 18 -->
+        <div class="umkm-card" data-category="otomotif" data-aos="fade-up">
+          <span class="badge">Otomotif</span>
+          <h3>Bangun</h3>
+          <p>Toko onderdil mobil.</p>
+
+          <div class="umkm-info">
+            <span>👤 Bangun</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Bangun',
+                'Menjual berbagai sparepart dan onderdil mobil untuk kebutuhan kendaraan.',
+                'Dusun Totogan RT 02/RW 01',
+                'Otomotif',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 19 -->
+        <div class="umkm-card" data-category="peternakan" data-aos="fade-up">
+          <span class="badge">Peternakan</span>
+          <h3>Mukhlis N</h3>
+          <p>Usaha pemotongan ayam.</p>
+
+          <div class="umkm-info">
+            <span>👤 Mukhlis N</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Mukhlis N',
+                'Melayani pemotongan dan penjualan ayam segar untuk kebutuhan masyarakat.',
+                'Dusun Totogan RT 02/RW 01',
+                'Peternakan',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 20 -->
+        <div class="umkm-card" data-category="jasa" data-aos="fade-up">
+          <span class="badge">Jasa</span>
+          <h3>Narso</h3>
+          <p>Tenda dan sound system acara.</p>
+
+          <div class="umkm-info">
+            <span>👤 Narso</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Narso',
+                'Menyediakan jasa penyewaan tenda dan sound system untuk acara dan hajatan.',
+                'Dusun Totogan RT 02/RW 01',
+                'Jasa',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 21 -->
+        <div class="umkm-card" data-category="otomotif" data-aos="fade-up">
+          <span class="badge">Otomotif</span>
+          <h3>Windi Aji</h3>
+          <p>Bengkel motor harian.</p>
+
+          <div class="umkm-info">
+            <span>👤 Windi Aji</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Windi Aji',
+                'Bengkel motor yang melayani servis ringan, ganti oli, dan perawatan kendaraan.',
+                'Dusun Totogan RT 02/RW 01',
+                'Otomotif',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 22 -->
+        <div class="umkm-card" data-category="kuliner" data-aos="fade-up">
+          <span class="badge">Kuliner</span>
+          <h3>Normawati</h3>
+          <p>Produksi makanan ringan.</p>
+
+          <div class="umkm-info">
+            <span>👤 Normawati</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Normawati',
+                'Produksi makanan ringan dan camilan rumahan.',
+                'Dusun Totogan RT 02/RW 01',
+                'Kuliner',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 23 -->
+        <div class="umkm-card" data-category="kuliner" data-aos="fade-up">
+          <span class="badge">Kuliner</span>
+          <h3>Mukinah</h3>
+          <p>Makanan ringan .</p>
+
+          <div class="umkm-info">
+            <span>👤 Mukinah</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Mukinah',
+                'Menjual aneka snack dan makanan ringan untuk berbagai kebutuhan.',
+                'Dusun Totogan RT 02/RW 01',
+                'Kuliner',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 24 -->
+        <div class="umkm-card" data-category="kuliner" data-aos="fade-up">
+          <span class="badge">Kuliner</span>
+          <h3>Martiyah</h3>
+          <p>Camilan dan makanan ringan.</p>
+
+          <div class="umkm-info">
+            <span>👤 Martiyah</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Martiyah',
+                'Produksi camilan dan makanan ringan lokal dengan rasa tradisional.',
+                'Dusun Totogan RT 02/RW 01',
+                'Kuliner',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 25 -->
+        <div class="umkm-card" data-category="fashion" data-aos="fade-up">
+          <span class="badge">Fashion</span>
+          <h3>Mistirah</h3>
+          <p>Jasa penjahit pakaian.</p>
+
+          <div class="umkm-info">
+            <span>👤 Mistirah</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Mistirah',
+                'Melayani jasa jahit dan permak pakaian untuk berbagai kebutuhan.',
+                'Dusun Totogan RT 02/RW 01',
+                'Fashion',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 26 -->
+        <div class="umkm-card" data-category="perdagangan" data-aos="fade-up">
+          <span class="badge">Perdagangan</span>
+          <h3>Mifahudin</h3>
+          <p>Pedagang keliling kebutuhan harian.</p>
+
+          <div class="umkm-info">
+            <span>👤 Mifahudin</span>
+            <span>📍 Dusun Totogan RT 02/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Mifahudin',
+                'Pedagang keliling yang menjual berbagai kebutuhan harian masyarakat.',
+                'Dusun Totogan RT 02/RW 01',
+                'Perdagangan',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 27 -->
+        <div class="umkm-card" data-category="peternakan" data-aos="fade-up">
+          <span class="badge">Peternakan</span>
+          <h3>Aji Nuryanto</h3>
+          <p>Usaha pemotongan ayam segar.</p>
+
+          <div class="umkm-info">
+            <span>👤 Aji Nuryanto</span>
+            <span>📍 Dusun Totogan RT 03/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Aji Nuryanto',
+                'Usaha pemotongan dan penjualan ayam segar untuk kebutuhan konsumsi masyarakat.',
+                'Dusun Totogan RT 03/RW 01',
+                'Peternakan',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 28 -->
+        <div class="umkm-card" data-category="otomotif" data-aos="fade-up">
+          <span class="badge">Otomotif</span>
+          <h3>Supriyono</h3>
+          <p>Jasa reparasi jok kendaraan.</p>
+
+          <div class="umkm-info">
+            <span>👤 Supriyono</span>
+            <span>📍 Dusun Totogan RT 03/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Supriyono',
+                'Melayani reparasi dan modifikasi jok kendaraan dengan hasil rapi.',
+                'Dusun Totogan RT 03/RW 01',
+                'Otomotif',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 29 -->
+        <div class="umkm-card" data-category="perdagangan" data-aos="fade-up">
+          <span class="badge">Perdagangan</span>
+          <h3>Mawarrii</h3>
+          <p>Pedagang sayur keliling.</p>
+
+          <div class="umkm-info">
+            <span>👤 Mawarrii</span>
+            <span>📍 Dusun Totogan RT 03/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Mawarrii',
+                'Pedagang sayur keliling yang menyediakan sayuran segar setiap hari.',
+                'Dusun Totogan RT 03/RW 01',
+                'Perdagangan',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 30 -->
+        <div class="umkm-card" data-category="kuliner" data-aos="fade-up">
+          <span class="badge">Kuliner</span>
+          <h3>Surati</h3>
+          <p>Pedagang gorengan rumahan.</p>
+
+          <div class="umkm-info">
+            <span>👤 Surati</span>
+            <span>📍 Dusun Totogan RT 03/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Surati',
+                'Menjual aneka gorengan dan jajanan tradisional rumahan.',
+                'Dusun Totogan RT 03/RW 01',
+                'Kuliner',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+
+        <!-- 31 -->
+        <div class="umkm-card" data-category="sembako" data-aos="fade-up">
+          <span class="badge">Sembako</span>
+          <h3>Lili Arjani</h3>
+          <p>Toko sembako dan kebutuhan rumah.</p>
+
+          <div class="umkm-info">
+            <span>👤 Lili Arjani</span>
+            <span>📍 Dusun Totogan RT 03/RW 01</span>
+          </div>
+
+          <button
+            class="detail-btn"
+            onclick="
+              openModal(
+                'Lili Arjani',
+                'Toko sembako yang menyediakan kebutuhan pokok dan perlengkapan rumah tangga.',
+                'Dusun Totogan RT 03/RW 01',
+                'Sembako',
+              )
+            "
+          >
+            Lihat Detail
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- MODAL -->
+
+    <div class="modal" id="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+
+        <h2 id="modalNama"></h2>
+
+        <div class="modal-item">
+          <span>Jenis UMKM :</span>
+          <div id="modalJenis"></div>
+        </div>
+
+        <div class="modal-item">
+          <span>Alamat :</span>
+          <div id="modalAlamat"></div>
+        </div>
+
+        <div class="modal-item">
+          <span>Kategori :</span>
+          <div id="modalKategori"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+
+    <footer>
+      <div class="footer-container">
+        <div class="footer-box">
+          <div class="footer-logo">
+            <img src="assets/logo.png" />
+
+            <div>
+              <h3>Desa Bondolharjo</h3>
+              <p>
+                Kecamatan Punggelan, Kabupaten Banjarnegara, Provinsi Jawa
+                Tengah, Kode Pos 53462
+              </p>
+            </div>
+          </div>
+
+          <p>
+            Website resmi Desa Bondolharjo sebagai pusat informasi dan pelayanan
+            masyarakat desa.
+          </p>
+        </div>
+
+        <div class="footer-box">
+          <h4>Hubungi Kami</h4>
+
+          <a href="#">📍 Bondolharjo, Punggelan, Banjarnegara</a>
+
+          <a href="#">📧 desabondolharjo@gmail.com</a>
+
+          <a href="#">📞 082220010959</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Desa Bondolharjo</p>
+        <p>Website Desa Bondolharjo</p>
+      </div>
+    </footer>
+
+    <!-- FLOAT -->
+
+    <a href="https://wa.me/6282220010959" class="whatsapp-float">
+      <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png" />
+    </a>
+
+    <a href="#" class="top-btn">↑</a>
+
+    <!-- SCRIPT -->
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <script>
+      // =========================
+      // AOS
+      // =========================
+
+      AOS.init({
+        duration: 900,
+        once: true,
+        offset: 80,
+        easing: "ease-out-cubic",
+      });
+
+      // =========================
+      // NAVBAR SCROLL
+      // =========================
+
+      const navbar = document.getElementById("navbar");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
+        }
+      });
+
+      // =========================
+      // MODAL
+      // =========================
+
+      const modal = document.getElementById("modal");
+
+      function openModal(nama, jenis, alamat, kategori) {
+        // RESET ANIMATION
+
+        const modalContent = document.querySelector(".modal-content");
+
+        modalContent.style.animation = "none";
+
+        void modalContent.offsetWidth;
+
+        modalContent.style.animation = "";
+
+        // SET DATA
+
+        document.getElementById("modalNama").innerText = nama;
+
+        document.getElementById("modalJenis").innerText = jenis;
+
+        document.getElementById("modalAlamat").innerText = alamat;
+
+        document.getElementById("modalKategori").innerText = kategori;
+
+        // SHOW MODAL
+
+        modal.classList.add("show");
+
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        modal.classList.remove("show");
+
+        document.body.style.overflow = "auto";
+      }
+
+      // CLOSE OUTSIDE
+
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      // CLOSE ESC
+
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") {
+          closeModal();
+        }
+      });
+
+      const cards = document.querySelectorAll(".umkm-card");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            } else {
+              entry.target.classList.remove("show");
+            }
+          });
+        },
+
+        {
+          threshold: 0.12,
+        },
+      );
+
+      // OBSERVE CARD
+
+      cards.forEach((card, index) => {
+        card.style.transitionDelay = `${index * 0.05}s`;
+
+        observer.observe(card);
+      });
+
+      const filterButtons = document.querySelectorAll(".filter-btn");
+
+      filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          // ACTIVE BUTTON
+
+          filterButtons.forEach((btn) => {
+            btn.classList.remove("active");
+          });
+
+          button.classList.add("active");
+
+          // CATEGORY
+
+          const category = button.innerText.toLowerCase();
+
+          // CARD FILTER
+
+          cards.forEach((card, index) => {
+            const match =
+              category === "semua" || card.dataset.category === category;
+
+            if (match) {
+              card.style.display = "block";
+
+              setTimeout(() => {
+                card.classList.remove("hide");
+
+                requestAnimationFrame(() => {
+                  card.classList.add("show");
+                });
+              }, index * 60);
+            } else {
+              card.classList.remove("show");
+
+              card.classList.add("hide");
+
+              setTimeout(() => {
+                card.style.display = "none";
+              }, 350);
+            }
+          });
+        });
+      });
+
+      // =========================
+      // SEARCH ANIMATION
+      // =========================
+
+      const searchInput = document.getElementById("searchInput");
+
+      searchInput.addEventListener("input", () => {
+        const value = searchInput.value.toLowerCase();
+
+        cards.forEach((card, index) => {
+          const text = card.innerText.toLowerCase();
+
+          if (text.includes(value)) {
+            card.style.display = "block";
+
+            setTimeout(() => {
+              card.classList.remove("hide");
+
+              requestAnimationFrame(() => {
+                card.classList.add("show");
+              });
+            }, index * 40);
+          } else {
+            card.classList.remove("show");
+
+            card.classList.add("hide");
+
+            setTimeout(() => {
+              card.style.display = "none";
+            }, 300);
+          }
+        });
+      });
+      // =========================
+      // TOP BUTTON
+      // =========================
+
+      document.querySelector(".top-btn").addEventListener("click", (e) => {
+        e.preventDefault();
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      });
+
+      // =========================
+      // PARALLAX HERO
+      // =========================
+
+      const heroImage = document.querySelector(".hero img");
+
+      window.addEventListener("scroll", () => {
+        const scrollY = window.scrollY;
+
+        heroImage.style.transform = `scale(1.08) translateY(${scrollY * 0.08}px)`;
+      });
+
+      // =========================
+      // CARD HOVER 3D EFFECT
+      // =========================
+
+      cards.forEach((card) => {
+        card.addEventListener("mousemove", (e) => {
+          const rect = card.getBoundingClientRect();
+
+          const x = e.clientX - rect.left;
+
+          const y = e.clientY - rect.top;
+
+          const centerX = rect.width / 2;
+
+          const centerY = rect.height / 2;
+
+          const rotateX = ((y - centerY) / centerY) * -4;
+
+          const rotateY = ((x - centerX) / centerX) * 4;
+
+          card.style.transform = `
+                    perspective(1000px)
+                    rotateX(${rotateX}deg)
+                    rotateY(${rotateY}deg)
+                    translateY(-8px)
+                  `;
+        });
+
+        card.addEventListener("mouseleave", () => {
+          card.style.transform = "translateY(0)";
+        });
+      });
+
+      // =========================
+      // BUTTON RIPPLE EFFECT
+      // =========================
+
+      const buttons = document.querySelectorAll(".detail-btn");
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", function (e) {
+          const ripple = document.createElement("span");
+
+          ripple.classList.add("ripple");
+
+          const rect = button.getBoundingClientRect();
+
+          ripple.style.left = e.clientX - rect.left + "px";
+
+          ripple.style.top = e.clientY - rect.top + "px";
+
+          this.appendChild(ripple);
+
+          setTimeout(() => {
+            ripple.remove();
+          }, 600);
+        });
+      });
+
+      // =========================
+      // AUTO ACTIVE NAV
+      // =========================
+
+      const navLinks = document.querySelectorAll("nav a");
+
+      navLinks.forEach((link) => {
+        if (link.href === window.location.href) {
+          link.classList.add("active");
+        }
+      });
+    </script>
+  </body>
+</html>
