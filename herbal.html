@@ -812,30 +812,28 @@
 
         .dropdown-content {
           position: static;
+
           width: 100%;
+
           margin-top: 6px;
+
           padding: 6px;
 
           display: flex;
           flex-direction: column;
-          gap: 4px;
 
-          background: rgba(255, 255, 255, 0.06);
-          border: none;
-          box-shadow: none;
+          gap: 4px;
 
           opacity: 1;
           visibility: visible;
+
           transform: none;
 
-          max-height: 0;
-          overflow: hidden;
+          background: rgba(255, 255, 255, 0.06);
 
-          transition: 0.3s;
-        }
+          border: none;
 
-        .dropdown.active .dropdown-content {
-          max-height: 300px;
+          box-shadow: none;
         }
 
         .dropdown-content a {
@@ -1026,7 +1024,7 @@
 
         <!-- DROPDOWN PROFIL -->
         <div class="dropdown">
-          <a href="#" class="dropdown-toggle"> Profil Desa ▾ </a>
+          <a href="profil.html"> Profil Desa ▾ </a>
 
           <div class="dropdown-content">
             <a href="profil.html#tentang"> Tentang Desa </a>
@@ -1173,15 +1171,6 @@
           }
         },
       );
-      const dropdownToggle = document.querySelector(".dropdown-toggle");
-      const dropdown = document.querySelector(".dropdown");
-
-      dropdownToggle.addEventListener("click", (e) => {
-        if (window.innerWidth <= 768) {
-          e.preventDefault();
-          dropdown.classList.toggle("active");
-        }
-      });
       const menuToggle = document.getElementById("menuToggle");
       const navMenu = document.querySelector("nav");
 
