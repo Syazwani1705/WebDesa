@@ -879,61 +879,143 @@
       }
 
       @media (max-width: 768px) {
-        header {
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 14px;
-          padding: 16px 5%;
+       header {
+          padding: 14px 5%;
+          justify-content: space-between;
+          align-items: center;
+        }
+
+        .menu-toggle {
+          display: flex;
         }
 
         .logo {
-          width: 100%;
+          gap: 10px;
         }
 
         .logo img {
-          width: 50px;
+          width: 48px;
         }
 
         .logo h1 {
-          font-size: 18px;
+          font-size: 17px;
         }
 
         .logo p {
           font-size: 10px;
         }
 
-        nav {
-          width: 100%;
-          justify-content: flex-start;
-          overflow-x: auto;
-          padding-bottom: 6px;
-          gap: 12px;
+        .menu-toggle {
+          display: flex;
+          flex-direction: column;
+          gap: 5px;
+          cursor: pointer;
         }
 
-        nav::-webkit-scrollbar {
-          display: none;
+        .menu-toggle span {
+          width: 26px;
+          height: 3px;
+          border-radius: 999px;
+          background: white;
+          transition: 0.3s;
+        }
+
+        /* MENU */
+        nav {
+          position: absolute;
+          top: calc(100% + 10px);
+          right: 5%;
+
+          width: 270px;
+
+          display: flex;
+          flex-direction: column;
+
+          padding: 14px;
+
+          gap: 6px;
+
+          background: rgba(74, 12, 24, 0.98);
+          backdrop-filter: blur(15px);
+
+          border-radius: 18px;
+
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-15px);
+
+          transition: 0.3s ease;
+
+          z-index: 999;
+        }
+
+        nav.show {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
         }
 
         nav a {
-          font-size: 13px;
-          white-space: nowrap;
+          width: 100%;
+          padding: 12px 15px;
+          border-radius: 12px;
+          font-size: 14px;
+        }
+
+        nav a:hover {
+          background: rgba(255, 255, 255, 0.08);
         }
 
         .btn-nav {
-          padding: 10px 20px;
+          width: 100%;
+          text-align: center;
+        }
+
+        /* DROPDOWN */
+        .dropdown {
+          width: 100%;
+        }
+
+        .dropdown-content {
+          position: static;
+          width: 100%;
+
+          margin-top: 6px;
+
+          display: none;
+
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+
+          background: rgba(255, 255, 255, 0.05);
+
+          border: none;
+          box-shadow: none;
+
+          border-radius: 12px;
+          padding: 6px;
+        }
+
+        .dropdown.active .dropdown-content {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .dropdown-content a {
+          color: white;
+          font-size: 13px;
+          padding: 10px 12px;
         }
 
         .hero {
-          height: 75vh;
+          height: 90vh;
         }
 
         .hero-text {
           width: 90%;
-        }
-
-        .hero-badge {
-          font-size: 12px;
-          padding: 8px 16px;
         }
 
         .hero-text h2 {
@@ -943,7 +1025,7 @@
 
         .hero-text p {
           font-size: 14px;
-          line-height: 1.8;
+          line-height: 1.7;
         }
 
         .title {
@@ -1088,17 +1170,26 @@
         </div>
       </div>
 
+      <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
       <nav>
-        <a href="index.html">Beranda</a>
+        <!-- BERANDA -->
+        <a href="index.html"> Beranda </a>
 
+        <!-- DROPDOWN PROFIL -->
         <div class="dropdown">
-          <a href="profil.html" class="active">Profil Desa ▾</a>
+          <a href="profil.html" class="dropdown-toggle" class="active">
+            Profil Desa ▾
+          </a>
 
           <div class="dropdown-content">
-            <a href="#tentang">Tentang Desa</a>
-            <a href="#sejarah">Sejarah</a>
-            <a href="#visi-misi">Visi & Misi</a>
-            <a href="#peta">Peta Desa</a>
+            <a href="profil.html#tentang">Tentang Desa</a>
+            <a href="profil.html#sejarah">Sejarah</a>
+            <a href="profil.html#visi-misi">Visi & Misi</a>
+            <a href="profil.html#peta">Peta Desa</a>
           </div>
         </div>
 
@@ -1483,6 +1574,33 @@
         } else {
           navbar.classList.remove("scrolled");
         }
+      });
+
+      const menuToggle = document.getElementById("menuToggle");
+      const navMenu = document.querySelector("nav");
+
+      menuToggle.addEventListener("click", () => {
+        navMenu.classList.toggle("show");
+      });
+
+      const dropdownToggle = document.querySelector(".dropdown-toggle");
+      const dropdown = document.querySelector(".dropdown");
+
+      if (dropdownToggle) {
+        dropdownToggle.addEventListener("click", (e) => {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            dropdown.classList.toggle("active");
+          }
+        });
+      }
+
+      document.querySelectorAll("nav a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (!link.classList.contains("dropdown-toggle")) {
+            navMenu.classList.remove("show");
+          }
+        });
       });
 
       // REVEAL ANIMATION
