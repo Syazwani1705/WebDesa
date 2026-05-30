@@ -677,7 +677,19 @@
         border-radius: 999px;
         background: white;
       }
+      .dropdown-content {
+        max-height: 0;
+        overflow: hidden;
+        padding: 0;
+        margin-top: 0;
+        transition: 0.3s ease;
+      }
 
+      .dropdown.active .dropdown-content {
+        max-height: 300px;
+        padding: 6px;
+        margin-top: 6px;
+      }
       /* MOBILE */
 
       /* ================= RESPONSIVE ================= */
@@ -757,36 +769,39 @@
         }
 
         nav {
-          position: absolute;
+          position: fixed;
+          top: 0;
+          right: -100%;
 
-          top: 100%;
-          left: 0;
-
-          width: 100%;
+          width: 280px;
+          height: 100vh;
 
           background: linear-gradient(180deg, #4a0c18, #5c0f1d, #7a1f2b);
 
           flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
 
-          max-height: 0;
-          overflow: hidden;
+          padding: 95px 24px 30px;
+
+          gap: 8px;
 
           transition: 0.4s ease;
+
+          z-index: 1000;
+
+          overflow-y: auto;
         }
 
         nav.show {
-          max-height: 600px;
+          right: 0;
         }
+
         nav a {
           width: 100%;
-
           padding: 14px 16px;
-
           border-radius: 14px;
-
           font-size: 14px;
-
-          display: block;
         }
 
         nav a:hover {
@@ -1024,16 +1039,13 @@
 
         <!-- DROPDOWN PROFIL -->
         <div class="dropdown">
-          <a href="profil.html"> Profil Desa ▾ </a>
+          <a href="profil.html" class="dropdown-toggle"> Profil Desa ▾ </a>
 
           <div class="dropdown-content">
-            <a href="profil.html#tentang"> Tentang Desa </a>
-
-            <a href="profil.html#sejarah"> Sejarah </a>
-
-            <a href="profil.html#visi-misi"> Visi & Misi </a>
-
-            <a href="profil.html#peta"> Peta Desa </a>
+            <a href="profil.html#tentang">Tentang Desa</a>
+            <a href="profil.html#sejarah">Sejarah</a>
+            <a href="profil.html#visi-misi">Visi & Misi</a>
+            <a href="profil.html#peta">Peta Desa</a>
           </div>
         </div>
 
@@ -1177,7 +1189,15 @@
       menuToggle.addEventListener("click", () => {
         navMenu.classList.toggle("show");
       });
+      const dropdownToggle = document.querySelector(".dropdown-toggle");
+      const dropdown = document.querySelector(".dropdown");
 
+      dropdownToggle.addEventListener("click", (e) => {
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          dropdown.classList.toggle("active");
+        }
+      });
       // CLOSE MENU
 
       document.querySelectorAll("nav a").forEach((link) => {
