@@ -675,47 +675,80 @@
       }
 
       /* MOBILE */
+
+      /* ================= MOBILE NAVBAR ================= */
       @media (max-width: 768px) {
         header {
           padding: 14px 5%;
           display: flex;
-          flex-direction: row;
           justify-content: space-between;
           align-items: center;
-          gap: 0;
         }
 
+        /* LOGO */
+        .logo {
+          gap: 10px;
+          max-width: 80%;
+        }
+
+        .logo img {
+          width: 45px;
+        }
+
+        .logo h1 {
+          font-size: 15px;
+          line-height: 1.2;
+        }
+
+        .logo p {
+          display: none;
+        }
+
+        /* HAMBURGER */
         .menu-toggle {
           display: flex;
+          flex-direction: column;
+          gap: 5px;
+          cursor: pointer;
         }
 
+        .menu-toggle span {
+          width: 26px;
+          height: 3px;
+          border-radius: 999px;
+          background: white;
+          transition: 0.3s;
+        }
+
+        /* MENU */
         nav {
           position: absolute;
-          top: 100%;
+          top: calc(100% + 10px);
           right: 5%;
 
-          width: 260px;
-
-          background: rgba(74, 12, 24, 0.98);
-          backdrop-filter: blur(12px);
-
-          border-radius: 18px;
+          width: 270px;
 
           display: flex;
           flex-direction: column;
-          align-items: stretch;
 
-          padding: 12px;
+          padding: 14px;
 
           gap: 6px;
 
+          background: rgba(74, 12, 24, 0.98);
+          backdrop-filter: blur(15px);
+
+          border-radius: 18px;
+
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+
           opacity: 0;
           visibility: hidden;
-          transform: translateY(-10px);
+          transform: translateY(-15px);
 
           transition: 0.3s ease;
 
-          z-index: 1000;
+          z-index: 999;
         }
 
         nav.show {
@@ -726,7 +759,7 @@
 
         nav a {
           width: 100%;
-          padding: 13px 15px;
+          padding: 12px 15px;
           border-radius: 12px;
           font-size: 14px;
         }
@@ -735,21 +768,35 @@
           background: rgba(255, 255, 255, 0.08);
         }
 
+        .btn-nav {
+          width: 100%;
+          text-align: center;
+        }
+
+        /* DROPDOWN */
+        .dropdown {
+          width: 100%;
+        }
+
         .dropdown-content {
           position: static;
           width: 100%;
 
-          opacity: 1;
-          visibility: visible;
-
-          transform: none;
+          margin-top: 6px;
 
           display: none;
 
-          background: rgba(255, 255, 255, 0.06);
+          opacity: 1;
+          visibility: visible;
+          transform: none;
+
+          background: rgba(255, 255, 255, 0.05);
 
           border: none;
           box-shadow: none;
+
+          border-radius: 12px;
+          padding: 6px;
         }
 
         .dropdown.active .dropdown-content {
@@ -760,11 +807,104 @@
         .dropdown-content a {
           color: white;
           font-size: 13px;
+          padding: 10px 12px;
         }
 
-        .btn-nav {
-          width: 100%;
+        /* HERO */
+        .hero {
+          height: 60vh;
+        }
+
+        .hero-text {
+          width: 90%;
+        }
+
+        .hero-text h2 {
+          font-size: 32px;
+        }
+
+        .hero-text p {
+          font-size: 14px;
+        }
+
+        /* CONTENT */
+        .content {
+          padding: 70px 5%;
+        }
+
+        .article-content {
+          padding: 24px;
+        }
+
+        .article-content h1 {
+          font-size: 28px;
+        }
+
+        .article-content p {
+          font-size: 14px;
+        }
+
+        .quote {
+          font-size: 15px;
+          padding: 20px;
+        }
+
+        /* FOOTER */
+        .footer-container {
+          flex-direction: column;
+        }
+
+        .footer-bottom {
+          flex-direction: column;
           text-align: center;
+          gap: 8px;
+        }
+
+        /* FLOAT BUTTON */
+        .whatsapp-float {
+          width: 55px;
+          height: 55px;
+          right: 18px;
+          bottom: 85px;
+        }
+
+        .whatsapp-float img {
+          width: 30px;
+        }
+
+        .top-btn {
+          width: 50px;
+          height: 50px;
+          right: 18px;
+          bottom: 18px;
+          font-size: 22px;
+        }
+      }
+
+      /* EXTRA SMALL */
+      @media (max-width: 480px) {
+        .logo h1 {
+          font-size: 14px;
+        }
+
+        nav {
+          width: 240px;
+        }
+
+        .hero-text h2 {
+          font-size: 26px;
+        }
+
+        .hero-text p {
+          font-size: 13px;
+        }
+
+        .article-content h1 {
+          font-size: 22px;
+        }
+
+        .article-content {
+          padding: 20px;
         }
       }
       @media (max-width: 480px) {
