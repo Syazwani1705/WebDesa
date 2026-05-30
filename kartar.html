@@ -678,27 +678,11 @@
       @media (max-width: 768px) {
         header {
           padding: 14px 5%;
+          display: flex;
           flex-direction: row;
           justify-content: space-between;
           align-items: center;
-        }
-
-        .logo {
-          flex-direction: row;
-          width: auto;
-          text-align: left;
-        }
-
-        .logo img {
-          width: 45px;
-        }
-
-        .logo h1 {
-          font-size: 16px;
-        }
-
-        .logo p {
-          display: none;
+          gap: 0;
         }
 
         .menu-toggle {
@@ -708,36 +692,47 @@
         nav {
           position: absolute;
           top: 100%;
-          left: 0;
+          right: 5%;
 
-          width: 100%;
+          width: 260px;
 
           background: rgba(74, 12, 24, 0.98);
+          backdrop-filter: blur(12px);
 
-          backdrop-filter: blur(15px);
+          border-radius: 18px;
 
+          display: flex;
           flex-direction: column;
-          align-items: flex-start;
+          align-items: stretch;
 
-          padding: 20px;
+          padding: 12px;
 
-          gap: 0;
+          gap: 6px;
 
-          display: none;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(-10px);
+
+          transition: 0.3s ease;
+
+          z-index: 1000;
         }
 
         nav.show {
-          display: flex;
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
         }
 
         nav a {
           width: 100%;
-          padding: 14px 0;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+          padding: 13px 15px;
+          border-radius: 12px;
+          font-size: 14px;
         }
 
-        .dropdown {
-          width: 100%;
+        nav a:hover {
+          background: rgba(255, 255, 255, 0.08);
         }
 
         .dropdown-content {
@@ -751,25 +746,23 @@
 
           display: none;
 
-          background: rgba(255, 255, 255, 0.08);
+          background: rgba(255, 255, 255, 0.06);
 
-          margin-top: 8px;
-
-          box-shadow: none;
           border: none;
+          box-shadow: none;
         }
 
         .dropdown.active .dropdown-content {
           display: flex;
+          flex-direction: column;
         }
 
         .dropdown-content a {
-          color: #fff;
-          padding-left: 20px;
+          color: white;
+          font-size: 13px;
         }
 
         .btn-nav {
-          margin-top: 10px;
           width: 100%;
           text-align: center;
         }
@@ -831,16 +824,13 @@
 
         <!-- DROPDOWN PROFIL -->
         <div class="dropdown">
-          <a href="profil.html"> Profil Desa ▾ </a>
+          <a href="profil.html" class="dropdown-toggle"> Profil Desa ▾ </a>
 
           <div class="dropdown-content">
-            <a href="profil.html#tentang"> Tentang Desa </a>
-
-            <a href="profil.html#sejarah"> Sejarah </a>
-
-            <a href="profil.html#visi-misi"> Visi & Misi </a>
-
-            <a href="profil.html#peta"> Peta Desa </a>
+            <a href="profil.html#tentang">Tentang Desa</a>
+            <a href="profil.html#sejarah">Sejarah</a>
+            <a href="profil.html#visi-misi">Visi & Misi</a>
+            <a href="profil.html#peta">Peta Desa</a>
           </div>
         </div>
 
