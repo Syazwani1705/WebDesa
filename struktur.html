@@ -725,7 +725,21 @@
           width: 210px;
         }
       }
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 1001;
+      }
 
+      .menu-toggle span {
+        width: 26px;
+        height: 3px;
+        border-radius: 999px;
+        background: white;
+        transition: 0.3s ease;
+      }
       @media (max-width: 768px) {
         body {
           overflow-x: hidden;
